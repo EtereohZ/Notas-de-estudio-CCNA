@@ -1,0 +1,1 @@
+A networking model categorizes and provides a structure for networking [[Networking Protocols|protocols]] and [[standards]].

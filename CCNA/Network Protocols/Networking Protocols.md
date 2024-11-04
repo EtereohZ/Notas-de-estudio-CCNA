@@ -1,0 +1,1 @@
+They're a set of logical rules defining how network devices and software should work.

@@ -1,0 +1,77 @@
+
+#### IPv4 Header
+- **Version**: 
+	- Identifica la IPv usada
+		- IPv4 se identifica con un 4 o 0100
+		- IPv6 se identifica con un 6 o 0110
+	- 4 Bits de largo
+- **IHL - Internet Header Length**:
+	- Indica el largo total del ***IPv4 header**
+	- Identifica el largo total del *header* en incrementos de 4 bytes
+		- Por ej. si el valor es 5, significa que el largo total es de 20 bytes
+	- El valor mínimo es de 5 == 20 bytes
+	- El valor máximo es de 15 == 60 bytes
+	- 4 Bits de largo
+- **DSCP**:
+	- "Differentiated Services Code Point"
+	- Usado para [[QoS]]
+		- Usado para priorizar info sensible a retraso (streaming, video, etc.)
+	- 6 bits de largo
+- **ECN - Explicit Congestion Notification**:
+	- Provides end-to-end (between 2 endpoints) notification of network congestion **without dropping packets**
+	- Es opcional, debe ser soportado por los 2 *endpoints* y la red
+	- 2 Bits de largo
+- **Total Length**:
+	- Indica el largo total del paquete (L3 header + L4 segment + *payload*)
+	- Indica el largo total en bytes, no en incrementos
+	- Valor mínimo de 20 (IPv4 *header* sin data encapsulada)
+	- Valor máximo de 65.535 (valor máximo de 16 *bits*)
+	- 16 bits de largo
+- **Identification**:
+	- Si un paquete está fragmentado, este campo nos permite identificar a que paquete pertenece el fragmento
+	- Todos los fragmentos del mismo paquete tendrán su propio paquete IPv4 con el mismo valor en este campo 
+	- Paquetes serán fragmentados si son mas largos que el ***MTU*** (Maximum Transmission Unit)
+		- El MTU es usualmente 1500 bytes
+	- 16 Bits de largo
+- **Flags:**
+	- Usado para identificar y controlar fragmentos
+	- 3 Bits de largo
+		- Bit 0 siempre es 0, está reservado
+		- Bit 1 (DF bit) indica si el paquete debe ser fragmentado o no
+		- Bit 2 (MF bit) es 1 para decir que hay mas fragmentos en el paquete, 0 para decir que ese es el último paquete
+- **Fragment Offset:**
+	- Indica la posición del fragmento dentro del paquete original
+	- Permite que los fragmentos sean reensamblados aunque lleguen desordenados
+	- 13 Bits de largo
+- **TTL:**
+	- Time To Live
+	- Usado para evitar *loops* infinitos
+	- Indica el número de saltos, cada vez que el paquete llega a un router, disminuirá el TTL en 1
+	- Un router botará un *packet* con un TTL de 0
+	- 8 Bits de largo
+- **Protocol:**
+	- Indica el [[Networking Protocols|protocolo]] del L4 PDU 
+		- 6 Significa [[TCP]]
+		- 17 Significa [[UDP]]
+		- 1 Significa [[ICMP]]
+		- 59 Significa [[OSPF]]
+	- 8 Bits de largo
+- **Header Checksum:**
+	- Usado para verificar si hay **errores** en el **IPv4 *header***
+	- Cuando un router recibe el paquete, calcula el *checksum* del header y lo compara con el valor en este campo
+		- Si no calzan, significa que algún error ocurrió en la transmisión, así que  el router bota el paquete
+	- Para comprobar errores en el *payload*, se usa el protocolo encapsulado para *chequear*
+		- Como UDP y TCP
+	- 16 Bits de largo
+- **Source IP Address**: 
+	- Quién envía el paquete
+	- 4 Bytes de largo == 32 bits
+- **Destination IP Address**:
+	- 4 Bytes de largo == 32 bits
+	- A quien fue enviado el paquete
+- **Options:**
+	- Es opcional (ja)
+	- 0 - 320 bits de largo
+	- Si el **IHL** es > 5, significa que *Options* está presente
+
+![[Pasted image 20240827175205.png]]

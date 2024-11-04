@@ -1,0 +1,250 @@
+
+### Lista de comandos para la [[Cisco CLI|CLI]]
+
+- **?**: Nos muestra los comandos disponibles
+	- Usado después de una letra, por ej. "e?", nos dará todos los comandos que empiezan con esa letra
+	- Si lo usamos después de escribir la palabra y apretar espacio, nos dará la siguientes opciones que podemos ingresar
+		- Ej. enable password ?
+			- Nos dará de opción "7", "LINE" "Level"
+				- "LINE" en este caso se refiere a ingresar una clave
+- **enable**: Nos hace entrar al modo *Privileged EXEC Mode*
+	- Esto se notará cuando el ">" cambie por "#" después del hostname
+- **configure terminal**: Comando para entrar a *Global Configuration Mode* y así poder configurar el equipo
+	- Primero ingresamos el comando "enable"
+	- Sabremos que entramos porque "(config)" aparecerá después del hostname
+		- Ej. Router(Config)#
+- **exit**: Nos saca de *Global Configuration Mode* y nos devuelve  a *Privileged EXEC mode
+	- Si lo ingresamos de nuevo nos deslogea
+- **show** </archivo> : Muestra en consola el archivo seleccionado 
+	- Ej. "show running-config"
+	- Se usa desde *Privileged EXEC Mode*
+- **write**: Guarda la configuración
+	- Igual que "write memory"
+- **hostname </nombre>**: Nos permite cambiar el nombre del equipo
+- **copy**: Copia archivo
+- **service password-encryption**: hashea la contraseña para que no sea pueda ver al mostrar uno de los archivos de configuración
+	- Aparecerá un numero antes de la contraseña hasheada, cuando la mostremos
+		- El numero significa el tipo de hash.
+			- El *7* no es muy seguro y se puede crackear en 1 milisegundo
+			- *5* es MD5
+- **do**: Es como el comando "sudo" de Linux, nos da permisos de admin en ese comando
+	- Nos da permisos *Privileged EXEC Mode*
+- **tracert </ping>**
+	- Funciona como un ping que además nos va mostrando la ruta que va tomando el paquete
+- **secret**: Se usa con el comando "enable" para crear una contraseña con un hash mejor
+	- Ej. enable secret </clave>
+- **no**: cancela o elimina un comando ingresado
+	- Ej. "no service password-encryption" hará que las próximas contraseñas no estén hasheadas
+		- No funciona para las que ya existen
+- **show arp**: Comando para mostrar la tabla [[ARP|ARP]]
+	- Resolución L3 a L2
+- **show mac address-table**: Comando para mostrar la tabla [[MAC Address|MAC]]
+	- Usada por el *switch*
+	- *Routers* no tienen esta tabla
+- **clear mac address-table dynamic**: Borra todos los *dynamic MAC addresses* de la tabla
+	- incluyendo al final **"address </MAC>"** podemos especificar que MAC borrar
+	- Incluyendo al final **"interface </interface>"** podemos especificar que interface borrar
+- **ping**: Referir a [[Ping]]
+-
+- **show ip interface brief**: Comando utilizado para confirmar los estados de las interfaces y las direcciones IP de algún equipo
+	- **Interface**: Listado de las interfaces en el equipo
+	- **IP-Address**: Muestra la dirección IP asignada a cada interface.
+	- **OK?**: No es relevante, nos dice si el IP asignado es válido o no.
+	- **Method**: Indica el método mediante el cual una IP fue asignada a una interface.
+	- **Status**: Muestra el estado L1 de la interface
+		- Deshabilitados por defecto en *routers*
+		- Habilitadas por defecto en *switches*
+		- Muestra si la interface está cerrada, si hay cables conectados. etc.
+	- **Protocol**: Muestra el estado L2
+		- Muestra si [[Ethernet Frame]] está funcionando correctamente entre este y el equipo conectado
+- **show interfaces </nombre_interface>**: Nos muestra información detallada de L1, L2 y L3 de esa interface.
+- **show interfaces description**: Muy parecido a "show ip interface brief", pero muestra una línea de descripción
+- **show interfaces status**: Nos muestra estado e info de las interfaces
+	- ***Status*:** Igual al **show ip interface brief**, solo que se ven distintos
+	- ***[[VLAN]]***: Nos muestra a que VLAN está conectada la interfaz, si es *trunk*, si está *routeando*
+	- **[[Full - Half Duplex|Duplex]]**: *a-full* significa que el *switch* automáticamente negoció usar Full Duplex con el equipo conectado
+	- **Speed**: Muestra la velocidad
+	- **Type**: Nos muestra la velocidad a la que pueden operar los cables conectados
+- **shutdown**: Deshabilita una interface
+- **interface </nombre_de_la_interface>**: Nos permite entrar al modo para configurar la interface especificada
+	- "in g0/0" es la versión acortada del comando, podemos acortar tanto "interface" como el nombre de la interface, siempre y cuando se ponga su numero
+	- Nos permite asignar la dirección IP para la interface seleccionada
+	- **interface range </interface_inicial> - </interface_final>**: Nos permite elegir un rango de interfaces para configurar al mismo tiempo
+	- **interface range </interface_1>, </interface_2>**: Nos permite elegir varias interfaces específicas, separando con una "," 
+- **ip address** </direccion_ip> </subnetmask>: Lo ejecutamos estando en modo para configurar la interface
+		- Nos permite asignar dirección IP a la interface seleccionada
+- **no shutdown**: Usado para habilitar una interface seleccionada
+- **description ## </descripcion> ##**: Nos permite ingresar una descripción para esa interface
+		- No hay reglas sobre la descripción, pero puede ser utilizar poner hacia donde está conectado 
+- **speed </velocidad>**: Nos permite elegir una velocidad especifica o automático
+- **duplex**: Nos permite determinar que tipo de duplex queremos
+
+- **show ip route:**
+	- Nos muestra la *routing table* del [[router]]
+	- **Codes**: Nos muestra los distintos protocolos que el router puede usar para aprender rutas
+		- **L**: Código para *local*, es la ruta para la [[IPv4 Addressing|dirección IP]] configurada en al interfaz (tienen una netmask /32)
+		- **C**: Código para *connected*, son las rutas a la red en la que la interfaz del router está conectada(con la netmask que se configuró en la interface)
+		- **S**: Muestra rutas estáticas
+			- [1/0] son la *administrative distance* y *metric* del la ruta
+		- S*: Nos india que es una *static route*    
+- **ip route </ip_address> </netmask> </next_hop>**:
+	- Lo usamos para determinar la IP destino, su netmask, y el IP del siguiente router en el camino
+- **ip route </ip_address> </netmask> </exit_interface>:**
+	- Especifica por cual interfaz el *router* debería mandar sus paquetes, en vez de indicar el IP del siguiente router
+	- Si configuramos con este comando,  **show ip route** mostrará la ruta como *connected*
+- **ip route </ip_address> </netmask> </exit_interface> </next_hop>:
+	- Podemos especificar tanto la interfaz como el siguiente salto
+- **show vlan brief**: 
+	- Displays the VLAN's that exist on the switch, and which interfaces are in each VLAN
+	- VLAN's 1, 1002-1005 exist by default and cannot be deleted
+	- Este comando muestra los *access ports* asignados a cada VLAN, no los *trunk ports*
+- **vlan </numero_de_vlan>**
+	- Entramos a modo de configuración para es VLAN
+	- Modo manual para crear una VLAN
+- **name </nombre>**
+	- Elegimos el nombre para nuestra VLAN
+	
+- **switchport mode access**
+	- Configura interface como ***access port**
+		- Un *access port*  es un *switchport* que pertenece a una sola VLAN y conecta a *endhosts*, como un PC
+		- Se configura en el *switch*
+		- Tenemos que elegir primero las interfaces que queremos usar
+- **switchport access VLAN </numero_de_VLAN>**
+	- Asigna la [[VLAN]] al puerto
+	- Asigna las interfaces en el comando de arriba a la VLAN
+	- Crea la VLAN si es que no existe
+- **switchport mode trunk**
+	- Configura la interfaz elegida como ***trunk port**
+- **switchport trunk encapsulation </tipo>**
+	- Usado para elegir el tipo de encapsulación o para negociar
+		- Siempre 802.1Q
+	- No es necesario en equipos que no soporten [[VLAN|ISL]]
+- **show interfaces trunk**
+	- Nos muestra las *trunk interfaces*
+	- Recordar que "show vlan brief" no muestra los *trunk ports*
+	- **Mode**
+		- **on** nos dice que fue configurado manualmente
+	- **Encapsulation**
+		- Tipo de encapsulación
+	- **Status**
+		- Que está trunkeando
+	- **VLAN's allowed and active in management domain**
+		- Nos da las VLAN's que tenemos configuradas
+	- **VLAN's spanning tree forwarding state and not pruned**
+		- Clase futura
+- **switchport trunk allowed vlan </opcion> </vlans>**
+	- Este comando es usado para determinar las VLANS, o ninguna, que puede acceder a ese *trunk port*
+	- En "opción" tenemos para elegir: "WORD", "add", "all", "except", "none" o "remove"
+		- "WORD" es solo ingresar las VLANS permitidas, no hay que poner "WORD"
+		- "add" agrega VLANS a una lista ya existente
+		- "all" permite a todas las VLANS
+		- "except" acepta todas las VLANS excepto la que especificamos
+		- "none" remueve todas las VLANS permitidas
+- **switchport trunk native vlan </numero_de_vlan>**
+	- Comando usado para configurar la VLAN nativa en el *trunk port*
+- **encapsulation dot1q </numero_de_vlan>**
+	- Para configurar el numero de VLAN en la subinterfaz del *router*
+- **encapsulation dot1q </vlan_id> native**
+	- Configuramos esa subinterfaz como VLAN nativa
+	- Ver en [[VLAN]]
+- **default interface </interfaz>**
+	- Devuelve las configuraciones al *default* de la interfaz seleccionada
+- **ip routing**
+	- Activa *routing* L3 en el *Switch*
+	- IMPORTANTE
+- **no switchport**
+	- cambia la interfaz desde un *switchport* L2 a un L3 *routed port*
+	- Acordarse de elegir la interfaz, antes
+- **interface </numero_de_vlan>**
+	- Crea una *switch virtual interface* (SVI) para la VLAN seleccionada y configurarla
+	- Le podemos asignar IP
+	
+- **show interfaces </interfaz> switchport**
+	- Nos muestra información del switchport en al interfaz
+	- **switchport**: Enabled si es un puerto L2, si lo configuramos como *routed port*, se verá como deshabilitado
+	- **Administrative mode**: es lo que configuramos en la interfaz
+	- **Operational mode**: Si es un *trunk* o *access port*. Es el resultado final de configuración manual o negociación [[DTP]]
+	- **Administrative trunking encapsulation**: si tenemos la negociación de la encapsulación prendida o no
+	- **Negotiation of Trunking**: Muestra si DTP está habilitado o no
+- **switchport mode dynamic </auto_o_desirable>**
+	- Para activar [[DTP]] y elegir el modo que queremos
+- **switchport nonegotiate**
+	- Desactivamos DTP
+
+- **show vtp status**
+	- Nos muestra estado e info de VTP en el *switch*
+- **vtp mode </mod>**
+	- Elegimos el modo VTP que queremos
+- **vtp domain </nombre_dominio>**
+	- Elegimos o cambiamos el nombre del dominio [[VTP]]
+
+- **show spanning-tree**
+	- Nos muestra la información de costos, ID's de cada VLAN en la red, que [[STP|protocolo]] usamos
+	- **Root ID**
+		- Nos muestra la info del "root bridge"
+	- **Bridge ID**
+		- Nos muestra la info del *switch* que estamos viendo
+	- **No muestra el "root cost total**
+	- También se ve está info en [[Spanning Tree BPDU]]
+- **show spanning*</vlan> root*
+	- Nos deja elegir una VLAN para solo mostrar su info
+- **show spanning-tree detail**
+	- Mucho mas detallado
+- **show spanning tree summary**
+	- Estados de los puertos de cada VLAN
+	- Muestra el "root cost" total
+- **spanning-tree [[STP Toolkit|portfast]]**
+	- Le permite a la interface en [[STP]] pasar a modo "Forwarding" sin pasar por las otras etapas
+- **spanning-tree portfast default**
+	- Activamos "portfast" de forma global en todos los *access ports*
+- **spanning-tree portfast trunk**
+	- Activa "portfast" en un *trunk*
+	- Usado en conexiones con [[VLAN|ROAS]]
+- **spanning-tree bpduguard enable**
+	- Activamos "BPDU Guard" para proteger las interfaces, de formar bucles
+- **spanning-tree portfast bpduguard enable**
+	- Activamos "BPDU Guard" en todas las interfaces que tengan "portfast" habilitado
+- **spanning-tree mode </modo>**
+	- Elegimos el modo SPT que queremos
+	- **PVST**
+	- **rapid-pvst**
+- **spannin-tree vlan </VLAN_ID> root primary**
+	- Nos permite configurar manualmente que *switch* será el "root bridge"
+- **spannin-tree vlan </VLAN_ID> root secondary**
+	- Nos permite configurar un segundo "root bridge"
+	- Cambia la prioridad STP del equipo a 28672
+- **spanning-tree vlan </VLAN_ID> port-priority </prioridad>**
+	- Nos permite elegir manualmente la prioridad [[STP]] que queremos para el *switch*
+	- Primero debemos elegir interfaz
+- **spanning-tree link-type </tipo>**
+	- Elegimos el tipo de "link type" que queremos en [[RSTP]]
+
+- Para ver comandos de [[EtherChannel]] ver la página
+- Para comandos detallados de *[[Dynamic Routing|dynamic routing protocols]]* ver las paginas de cada uno:
+	- [[OSPF]]
+	- [[EIGRP]]
+	- [[RIP]]
+- **router </protocolo_de_routeo> </numero>**
+	- nos permite elegir el protocolo que usaremos para *routeo* dinámico
+	- Parte del numero se explicará. opcional
+- **[[Comando show ip protocols|show]] ip protocols**
+	- Nos mostrará info de los protocolos de *routing* usados
+- **ip route </ip_de_la_red></netmask></next_hop></AD>**
+	- Nos permite configurar la [[Dynamic Routing|AD]] de una ruta estática, puede convertirse en *floating static route*
+- **show ip </protocolo_dinamico> </opcion>**
+	- Nos permite ver más detalles sobre el tráfico, métricas y otras cosas de los protocolos
+	- Revisar la página de cada uno para mas detalles
+- **maximum-paths </numero>**
+	- Nos permite configurar la cantidad máxima de *paths*
+		- Todavía no sabemos que es
+- **distance </distancia>**
+	- Nos permite configurar la AD del protocolo que estamos usando
+- **eigrp router-id </ID>**
+	- nos permite configurar el *router* ID en [[EIGRP]]
+		- Debe ser un número de 32 bits
+- **default-information originate**
+	- Usado en el protocolos de routeo dinámico para anunciar a los otros *routers* la dirección a la *default route*
+- **interface loopback </numero>**
+	- Sirve para crear una interfaz [[Loopback Interface|loopback]]
+	- En "numero ingresamos el número que le daremos a la interfaz"
+	- Luego le asignamos IP como cualquier otra interfaz
