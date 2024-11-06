@@ -20,6 +20,7 @@ Todos los [[Router|routers]], por defecto, poseen la misma prioridad. Se deben c
 	2. Usado para elegir IP virtual
 4. Seguimos con "standby </numero_grupo> priority </valor>"
 	1. Lo usamos para determinar que *router* será activo
-5. Ahora podemos usar "standby preempt"
+	2. Más alto el numero -> más alta la prioridad
+5. Ahora podemos usar "standby </numero_grupo> preempt"
 	1. Esto fuerza a que el *router* tome el rol de activo
 6. "show standby" nos muestra la configuración
