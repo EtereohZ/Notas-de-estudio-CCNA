@@ -10,6 +10,7 @@ Otra manera de proteger los puertos es limitar la cantidad de MAC's que serán p
 1. Ingresamos el comando **"switchport port-security"**
 	1. Sólo funciona en puertos  "access" o "trunk" configurados manualmente, no los "dynamic"
 2. Cambiamos el modo de puerto, de ser necesario, con **"switchport mode {access|trunk}"**
+	1. Podemos ver el tipo de puerto con **"show interface </interfaz> switchport"**
 Nota:
 - Revisar [[VLAN]] y [[DTP]]
 
@@ -40,7 +41,7 @@ Manual:
 Usando "ErrDisable Recovery":
 1. Con el comando **"errdisable reovery cause </tipo_de_causa>"**
 	1. "psecure-violation" para cuando llega una dirección no autorizada
-
+***
 
 ### Show port-security interface
 
