@@ -13,7 +13,7 @@ Poseen 5 características esenciales:
 4. **Rapid elasticity**
 	1. Clientes pueden expandir, o disminuir, rápidamente los servicios que usan, desde una *pool* que aparenta ser infinita
 5. **Measured service**
-	1. El proveedor *cloud* mide el uso de los servicios por parte del usuario y, les es cobrado basado en ese uso (ej, x pesos por GB por día)
+	1. El proveedor *cloud* mide el uso de los servicios por parte del usuario y, les es cobrado basado en ese uso (ej. x pesos por GB por día)
 
 
 ## Modelos de servicio
