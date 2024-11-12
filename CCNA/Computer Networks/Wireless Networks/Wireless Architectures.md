@@ -3,7 +3,7 @@
 ## 802.11 Frame Format
 
 Algunos campos difieren entre versiones
-![[Pasted image 20241112154807.png]]
+![[Frame 802.11.png]]
 
 - **Frame Control**
 	- Da información acerca del tipo de mensaje y subtipo
