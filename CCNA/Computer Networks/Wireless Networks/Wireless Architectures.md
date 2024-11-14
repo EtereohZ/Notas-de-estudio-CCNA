@@ -29,7 +29,7 @@ Algunos campos difieren entre versiones
 	- Habilita "High Throughput operations"
 - **FCS**
 	- Mismo que el de [[Ethernet Frame]], usado para *chequear* errores
-
+***
 
 ## 802.11 Association Process
 
@@ -66,7 +66,7 @@ Existen 3 tipos de mensajes:
 		3. **ACK**
 3. **Data**
 	1. Usado para enviar los paquetes de data
-
+***
 
 ## AP Deployment Methods
 

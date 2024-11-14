@@ -20,7 +20,7 @@ Los estándares para LAN's *wireless* están definidos en IEEE 802.11.
 		5. **Dispersión**
 			1. Separación de las ondas a ondas de distinta frecuencia al atravesar un material
 2. Otros equipos usando el mismo canal pueden causar interferencia
-
+***
 
 
 ## Frecuencias de Radio
@@ -53,7 +53,7 @@ En la banda **2.4 GHz**, se recomienda que se usan los canales 1, 6 y 11. Si ubi
 ## Estándares 802.11
 
 ![[Estándares 802.11.png]]
-
+***
 
 ## Service Sets
 
@@ -84,7 +84,7 @@ Todos los equipos en un mismo *set* comparten el mismo **SSID** (service set ide
 		- La AP que se conecta a la red alambrica se llama **RAP** (Root Access Point)
 		- Las otras AP's se llaman **MAP** (Mesh Access Point)
 		- Se usa un protocolo para determinar el mejor camino a través de la *mesh*
-
+***
 
 
 ## Distribution System
