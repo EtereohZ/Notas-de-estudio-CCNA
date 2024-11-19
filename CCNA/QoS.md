@@ -49,13 +49,13 @@ Son usadas para controlar el flujo del tráfico.
 
 - "Shaping" funciona como amortiguador si es que la tasa de tráfico en una *queue* aumenta sobre lo configurado.
 - "Policing" bota el tráfico si es que la tasa aumenta sobre lo configurado.
-	- Policing nos pemite aceptar tráfico que viene en *bursts*, sin tener que botarlo
+	- Policing nos permite aceptar tráfico que viene en *bursts*, sin tener que botarlo
 	- También nos permite cambiar la marca del tráfico en vez de solo botarlo
 ****
 
 ## Classification
 
-El propósito de QoS es darle a algunas redes prioridad, sobre otras, en cuanto al tráfico durante periodos de congestión.
+El propósito de QoS es darle a algunas redes prioridad, sobre otras, en cuanto al tráfico, durante periodos de congestión.
 Hay varios métodos para clasificar trafico, entre los cuales se encuentran:
 1. Una ACL
 2. Network Based Application Recognition (NBAR)
@@ -77,6 +77,7 @@ Debido a que PCP solo se encuentra en el header 802.1Q, solo se puede usar en es
 Algunas de las marcas que son importante saber:
 1. **Default Forwarding**
 	1. "Best Effort Traffic"
+	2. Significa que no hay garantía de que el tráfico llegará a destino. o que cumple algún estándar QoS
 2. **Expedited Forwarding**
 	1. Para tráfico de voz
 3. **Assured Forwarding**
