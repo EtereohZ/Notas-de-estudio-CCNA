@@ -1,8 +1,9 @@
 # Notas de estudio CCNA
 
-Imagenes de https://www.youtube.com/@JeremysITLab
+Imágenes de https://www.youtube.com/@JeremysITLab
 
 Notas: 
-- Imágenes usan estructura del programa "Obsidian" para ser vistas en cada archivo, por lo que no se verán en las notas
-- Formas de estructurar la información se fueron refinando a lo largo de crear las notas. Archivos más viejos no estarán tan bonitos/ordenados cómo las más nuevos
+- Imágenes usan estructura formateo del programa "Obsidian", por lo que no se verán en GitHub
+	- Recomiendo abrir notas en Obsidian
+- Formas de estructurar la información se fueron refinando a lo largo de crear las notas. Notas más viejas no se verán de igual manera que las más nuevas 
 - Palabras entre "[[]]" funcionan como "backlinks" a otros archivos (como en Wikipedia) y, sólo funcionan en el programa Obsidian
