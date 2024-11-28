@@ -126,69 +126,52 @@ Last usable: 192.168.5.226/30
 Total: 2
 Subnet mask: 255.255.255.252
 
-VLAN 10
-red: 10.0.0.0/26
-bit : 00001010.**00000000.00000000.00**000000
-cuantos tomamos: 18 bits
 
-Broad: 10.0.0.63/26
-First usable: 10.0.0.1/26
-Last usable: 10.0.0.62/26
+
+192.168.5.0/24
+
+LAN2
+
+
+red: 192.168.5.0/25
+Broad: 192.168.5.127/25
+First usable: 192.168.5.1/25
+Last usable: 192.168.5.126/25
+Total: 126
+
+LAN1
+**1**0000000
+
+red: 192.168.5.128/26
+Broad: 192.168.191
+First usable: 192.168.5.129/26
+Last usable: 192.168.5.190/26
 Total: 62
-Subnetmask: 255.255.255.192
 
-VLAN 20
-10.0.0.64/26
-00001010.**00000000.00000000.01**000000
-tomamos 18 bits
+LAN3
+**1**0000000
 
-Broad: 10.0.0.127/26
-First usable: 10.0.0.65/26
-Last usable: 10.0.0.126/26
-Total:  62
-Netmask: 255.255.255.192
+red: 192.168.5.192/27
+Broad: 192.168.5.223/27
+First usable: 192.168.5.193/27
+Last usable: 192.168.5.222/27
+Total: 30
 
-VLAN 30
-10.0.0.128/26
-00001010.**00000000.00000000.10**000000
-Tomamos 18 bits
-
-Broad: 10.0.0.191/26
-First usable: 10.0.0.129/26
-Last usable: 10.0.0.190/26
-Total: 62
-Netmask: 255.255.255.192
+LAN4
 
 
-vlan 10
-10.0.0.0/26
-00001010.**00000000.00000000.00**000000
-Tomamos 18 bits
+red: 192.168.5.224
+Broad: 192.168.5.239
+First usable: 192.168.5.225
+Last usable: 192.168.5.238/28
+Total: 14
 
-Broad: 10.0.0.63/26
-First usable: 10.0.0.1/26
-Last usable: 10.0.0.62/26
-Total:  62
-Mask: 255.255.255.192
+Point to Point
 
-vlan 20
-10.0.0.64/26
-00001010.**00000000.00000000.01**000000
-toamos prestamos 18 bits
 
-Broad: 10.0.0.127
-First usable: 10.0.0.65/26
-Last usable: 10.0.0.126/26
-Total: 62
-Mask: 255.255.255.192
+red: 192.168.5.240/30
+Broad: 192.158.5.243
+First usable: 192.168.5.241
+Last usable: 192.168.5.242/30
+Total: 2
 
-vlan 30
-10.0.0.128/26
-00001010.**00000000.00000000.10**000000
-Tomamos 18 bits
-
-Broad: 10.0.0.191/26
-First usable: 10.0.0.129/26
-Last usable: 10.0.0.190/26
-Total: 62
-Mask: 255.255.255.192

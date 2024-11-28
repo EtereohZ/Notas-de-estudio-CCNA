@@ -17,10 +17,11 @@
 2. Eliminamos las subinterfaces del [[Router|router]] que usamos para las VLAN
 3. Usamos el comando "default interface </interfaz>" para devolver la configuración estándar
 4. Elegimos la interface que conectará *point-to-point* con el MS y le configuramos su dirección IP
-5. En el MS, ingresamos el comando "ip routing" para activar el *switch* para routear L3
-	1. Ver el [[CLI Commands|comando]]
+5. En el MS, ingresamos el comando "ip routing"
+	1. Habilita *routing* L3
 6. Ingresar el comando "no switchport", cambia la interfaz desde un *switchport* L2 a un L3 *routed port*
 	1. Acordarse de elegir la interfaz primero
+	2. Nos permite asignarle IP a la interfaz
 7. Le asignamos el IP a la interfaz
 8. Asignar la *default route* al *multilayer switch* con el comando "ip route 0.0.0.0 0.0.0.0 </ip_router>"
 9. Usar comando "show interfaces status" para ver las interfaces

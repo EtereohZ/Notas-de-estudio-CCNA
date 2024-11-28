@@ -6,7 +6,13 @@
 - We want to make sure that network traffic isn't sent unnecessarily to other devices.
 - Paquetes entre VLAN's se enviarán primero a un *router*
 - Si la fuente y destino pertenecen al mismo VLAN, los *[[Ethernet Frame|frames]]* no necesitan ser enviados al *router*
+***
 
+##### VLAN Ranges
+- VLAN normales
+	- Rango de 1-1005
+	- VLAN extendidas
+		- 1006-4094
 
 ¿Qué es un access port?
 Es un *switchport* que pertenece a una sola VLAN y conecta a *endhosts*, como un PC
@@ -25,15 +31,16 @@ Con VLAN *tagging*, *switches* van a ponerle un *tag* a todos los *frames* que s
 
 ##### ¿Configuración de un *trunk port?
 Primero debemos elegir la interface que queremos configurar.
-Para configurar interface como *trunk port* debemos usar el comando "switchport mode trunk", ese comando determina las interfaces elegidas como *trunk*, para ser utilizadas por más de 1 VLAN
-Consultar [[CLI Commands]].
+Para configurar interface como *trunk port* debemos usar el comando "switchport mode trunk", ese comando determina las interfaces elegidas como *trunk*, para ser utilizadas por más de 1 VLAN.
+Consultar la pestaña de configuración de más abajo.
+
 Puede ser que tengamos que elegir el tipo de encapsulación (802.1Q o ISL) antes de configurar la interface como *trunk port*, pero es solo en *switches* viejos. Para eso es el comando "switchport trunk encapsulation </tipo_de_encapsulacion>"
 Después, debemos elegir que VLAN's serán permitidas por el *trunk port*, para eso usamos el comando "switchport trunk allowed vlan".
 
 Para propósitos de seguridad, es buena idea cambiar la *native* VLAN a una VLAN que no esté siendo usada (recordar cambiar en ambos switches).
 Para esto usaremos el comando "switchport trunk native vlan </numero_vlan>".
 
-Por último, debemos configurar ROAS. Seguir leyendo.
+Por último, debemos configurar ROAS. Ver al final.
 ##### VLAN Tagging
 Existen 2 protocolos para hacer *tag*
 Se usa para identificar a que VLAN pertenece el *frame*
@@ -41,7 +48,7 @@ Se usa para identificar a que VLAN pertenece el *frame*
 	- Viejo y nadie lo usa
 - **IEE 802.1q**
 	- Es un estándar de la industria
-	- "dot1q nickname"
+	- "dot1q"
 	- Se inserta entre el "Source" y el "Type/Length" de un [[Ethernet Frame]]
 	- 4 Bytes de largo == 32 *bits*
 	- Está compuesto de 2 campos
@@ -69,6 +76,7 @@ Se usa para identificar a que VLAN pertenece el *frame*
 					- 12 *bits* de largo
 						- 2<sup>12</sup> = 4096 VLAN's totales
 					- IMPORTANTE
+![[Captura de pantalla 2024-08-31 172941.png]]
 #### Native VLAN
 - Es una característica del protocolo 802.1Q
 - Su *default* es VLAN 1 en todos los *trunk ports*
@@ -86,32 +94,53 @@ Se usa para identificar a que VLAN pertenece el *frame*
 	2. Al mostrar las interfaces, veremos que la nativa está usando la interfaz física, y las otras VLAN's usarán las subinterfaces
 	3. Borramos la subinterfaz que estaba usando la VLAN que queremos determinar como nativa y la asignamos a una interfaz física
 
-![[Captura de pantalla 2024-08-31 172941.png]]
+***
 
-##### VLAN Ranges
-- VLAN normales
-	- Rango de 1-1005
-	- VLAN extendidas
-		- 1006-4094
+## Configuración
+
+ **Primero elegiremos las interfaces que agregaremos a los puertos *access***
+1. Elegimos interfaces **"interface range </interfaces>"**
+2. Las convertimos en *access* con **"switchport mode access"**
+3. Les asignamos una VLAN con **"switchport access vlan </numero_vlan>"**
+	1. Asigna el puerto a la VLAN y, la crea si es que no existe
+4. Repetimos por cada VLAN que vayamos a crear
+
+**Ahora entramos a la interfaz y configuramos los puertos *trunk que necesitemos***
+1. Primero elegimos encapsulación con **"switchport trunk encapsulation dot1q"**
+	1. Necesario en equipos que soporten ISL
+2. Configuramos con **"switchport mode trunk"**
+
+**Dentro de la interfaz, procedemos con configurar que VLAN's serán permitidas en el *trunk***
+2. . Con **"switchport trunk allowed vlan </vlan_id>"**
+	1. Tiene varias opciones para agregar
+
+**Si queremos cambiar la VLAN nativa**
+1. Usamos **"switchport trunk native vlan </vlan_id>"**
+
+**Para revisar y cambiar nombres de nuestras VLAN's**
+1. **"show vlan brief"** nos muestra los puertos *access*
+2. **"show interfaces trunk"** nos muestra los puertos *trunk*
+3. Entramos al modo de configuración de una VLAN con **"vlan </numero_vlan>"**
+	1. También sirve para crear una VLAN directamente
+	2. Ingresamos el comando **"name </nombre>"** para cambiar nombre de VLAN
+
+
+RECORDAR QUE DEBEN EXISTIR TODAS LAS VLANS EN TODOS LOS *SWITCHES*. DEBEN CREARSE SI NO SALEN EN LA SECCIÓN DE "MANAGEMENT" EN "SHOW VLAN BRIEF"
+***
 
 ### Router on a Stick
 Es el nombre usado para *inter VLAN routing*, solo tendremos una interfaz física conectando el [[Router|router]] y el [[Switch|switch]].
 Es usado para *routear* entre multiples VLANS usando solo 1 interfaz entre el *router* y el *switch*.
-Serán como subinterfaces de una interface, Ej. g0/0.10, g0/0.20, g0/0.30. Y pueden operar com 3 interfaces separadas. Usar los mismos número que tengan las VLAN's
+Se convertirán en subinterfaces de una interfaz, Ej.  g0/0 se dividirá en g0/0.10, g0/0.20, g0/0.30. Y pueden operar como 3 interfaces separadas. Usar los mismos número que tengan las VLAN's
 
 ##### ¿Como configurar ROAS?
 
-1. Lo primero que tenemos que hacer es activar la interfaz con "no shutdown".
-2. Después, debemos ingresar a cada subinterfaz, usando el comando "interface </subinterfaz>"
-	1. Idealmente usar una subinterfaz que calce con el numero de la VLAN, para entenderla mas fácilmente.
-3. Elegimos el tipo de encapsulación
-	1. Comando es "encapsulation dot1q </numero_de_interfaz>"
-		1. Esto le dice al router que trate cualquier *[[Ethernet Frame|frame]]* *tageado* con el numero especifico de VLAN como si hubiese llegado por esta interfaz 
-			1. Por ej. Si llega un *frame* *tageado* con VLAN 10,  el [[router]] se comportará como si hubiese llegado por la interfaz g0/0.10
-			2. "Si viene *tageado* con VLAN 10, viene por está interfaz"
-		2. También *tageará* todos los *frames* que vayan a esta interfaz con VLAN 10
-			1. Ej. Al *router* le llega un *frame e identifica que le llega por la subinterfaz g0/0.10 debido a que el *switch* le puso un tag de VLAN 10.
-			2. El destino está en la red que está conectada a la interfaz g0/0.30 entonces, el *router* le pone un *tag* de VLAN 30
-			3. *Switch* también le pone un *tag* de VLAN 30
-4. asignar IP a la subinterfaz
-5. Hacer lo mismo para las otras interfaces
+**Ingresamos a la interfaz deseada y luego entramos a cada subinterfaz (esto la crea)**
+1. Con el comando **"interface </subinterface>"**
+	1. Idealmente usar una que calce con el ID de la VLAN
+
+**Ahora le asignamos cada subinterfaz a una VLAN**
+1. Con el comando **"encapsulation dot1q </id_vlan>"**
+	1. Cualquier *frame* que llegue con el id de la VLAN configurada será tratado por el *router* como si hubiese llegado por esta subinterfaz
+	2. También *tageará* todos los *frames* que tengan como destino a esa VLAN con el id de la VLAN
+2. Repetir para cada subinterfaz

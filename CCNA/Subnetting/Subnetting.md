@@ -24,18 +24,18 @@ Si queremos averiguar a que subnet pertenece determinada dirección IP:
 
 #### **EN *BOLD* QUEDARÁN MARCADOS LOS BITS QUE SE LE PRESTAN AL HOST***
 
-Ej. 172.25.217.192/21
-en binario sería 10101100.00011001.**11011**001.11000000
-como es /21 le estamos prestando 5 bits a la porción de la red
-Cambiamos todos los bits que pertenecen al host a 0's
-10101100.00011001.**11011**000.11000000
-Pasamos a decimal y nos da que pertenece a la subnet 172.25.216.0
+#### Ej. 172.25.217.192/21
+- En binario sería 10101100.00011001.**11011**001.11000000
+- Como es /21 le estamos pasando 5 bits a la porción de la red
+1. Cambiamos todos los bits que pertenecen al host a 0's
+	1. 10101100.00011001.**11011**000.00000000
+2. Pasamos a decimal y nos da que pertenece a la subnet 172.25.216.0
 
-Si queremos averiguar el broadcast address de una determinada red, Hacemos lo mismo de arriba, pero en vez de cambiar a 0, cambiamos a 1
-Ej. 192.168.**91.78/26** 
-Le estamos prestando 2 bits a la porción de la red y queda >> 01011011.**01**001110
-Cambiamos a 01011011.01111111
-La *broadcast* es 91.127
+Si queremos averiguar el broadcast address de una determinada red, Hacemos lo mismo de arriba, pero en vez de cambiar a 0 los *bits* del *host*, **los cambiamos a 1**
+#### Ej. 192.168.**91.78/26** 
+- Le estamos pasando 2 bits a la porción de la red y queda >> 01011011.**01**001110
+1. Cambiamos a 01011011.01111111
+2. La *broadcast* es 91.127
 
 #### PARA CALCULAR LA NETMASK
 1. Pasar todos los bits de la porción **DE LA RED** a 1's
@@ -95,3 +95,45 @@ Last usable address es 10.223.255.254/11
 Numero de hosts 2<sup>21</sup> - 2 es 2.097.150
 
 subnetmask es 11111111.11100000.0000000 >>255.224.0.0
+
+
+
+192.168.1.0
+
+sub 1
+red: 192.168.1.0/26
+Broad:192.168.1.63/26
+First usable: 192.168.1.1/26
+Last usable: 192.168.1.62/26
+Total: 62
+
+sub 2
+red: 192.168.1.64/26
+Broad: 192.168.1.127/26
+First usable:192.168.1.65
+Last usable:192.168.1.126
+Total: 62
+
+sub 2
+red: 192.168.1.128/26
+Broad:192.168.1.191/26
+First usable:192.168.1.129
+Last usable:192.168.1.190/36
+Total: 62
+
+sub 2
+red: 192.168.1.192/26
+Broad:192.168.1.255/26
+First usable:192.168.1.193
+Last usable:192.168.1.254
+Total:
+
+
+
+**11011**001.11000000 
+11011000.000000
+
+01011011.**01**001110
+01011011.01000000
+
+01001101
