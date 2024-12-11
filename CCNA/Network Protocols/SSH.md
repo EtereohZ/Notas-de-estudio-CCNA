@@ -7,31 +7,15 @@ VTY Lines (Virtual TeleType) indica las posibles conexiones simultaneas que son 
 
 
 
-## Configuración previa
-
-
-### Console Port Security
+## Configuración previa - de la console line
 
 Por defecto, no se necesita ninguna contraseña para acceder a la [[Cisco CLI|CLI]] de Cisco mediante el "Console Port". Podemos configurar una contraseña en la misma consola, para que cualquier persona que quiera acceder a la CLI deba primero conocer la contraseña.
 
-- Ingresamos el comando **"line console 0"**
-	- Solo queremos que haya 1 persona configurando al mismo tiempo, por eso ponemos 0
-	- nos permite entrar al modo de configuración de la *line*
-- Con **"password </clave>"** configuramos la clave
-- Después ponemos **"login"** para decirle al equipo que un usuario necesitará *logearse* para acceder a la CLI mediante el "console port"
-
-
-### Login local
-
-También podemos configurar la consola para requerir que los usuarios se *logeen* usando algunos de los *usernames* anteriormente configurados.
-
-- Con **"username </username> secret </clave>"** configuramos usuario y su contraseña
-- Seguimos con **"line console 0"**
-	- Entramos al modo de configuración de la "line"
-- Ahora usamos **"login local"** para decirle al equipo que un usuario necesitará *logearse* con un *username* ya existente
-- Por último, podemos poner un *timeout* para que se desconecté automáticamente después de un tiempo de inactividad, con **"exec-timeout </algo> </algo>"**
-
-
+**Primero estableceremos una contraseña y usuario para acceder a la consola**
+1. Ingresamos el comando **"enable secret </clave>"**
+	1. El uso de "secret" crea una clave con encriptación MD5
+2. Luego **""username </usuario> secret </misma_clave_de_arriba>**
+	1. Este se usará cuando queramos entrar a la *console line*
 
 ### L2 Switch - Management IP
 
@@ -39,11 +23,25 @@ Como ya sabemos, los *[[Switch|switches]]* no realizan *routeo* de paquetes y ta
 Pero, podemos asignarle una dirección [[IPv4 Addressing|IP]] a una SVI para permitir conexiones remotas a la CLI del *switch* (mediante SSH o Telnet).
 
 1. Partimos con **"interface </interfaz_virtual>"**
+	1. Ej. **"interface vlan </numero_vlan>"**
+		1. El número tiene que ser el ID de la VLAN en la que estemos trabajando
 2. Le asignamos dirección ip **"ip address </ip> </netmask>"**
 3. La activamos **"no shutdown"**
-4. Ahora debemos asignarle una *default gateway*, con **""ip default-gateway </default_gateway_ip>** 
+4. Ahora debemos asignarle una *default gateway*, con **""ip default-gateway </default_gateway_ip>""**
 
+### Login local
 
+Ahora configuraremos el puerto "console" para requerir que los usuarios se *logeen* usando algunos de los *usernames* anteriormente configurados, cuando se conecten por ella.
+
+**Empezamos entrando a su modo de configuración**
+- Con **line console 0"**
+
+**Ahora configuraremos el requerimiento de tener que *logearse***
+- Con **"login local"**
+	- Se requerirá usuario y contraseña configurados anteriormente
+
+**Finalmente, configuraremos tiempo de inactividad para que se desconecte**
+- Con **"exec-timeout </algo> </algo>"**
 
 
 ## Configuración SSH
@@ -54,34 +52,47 @@ Podemos ver la versión con **"show version"**, o vemos ver directamente si el q
 Recordar que para que podamos conectarnos a un *switch* mediante SSH, necesitamos primero configurar una IP en su SVI.
 ### Habilitando SSH
 
-1. Debemos configurar un *hostname* y un nombre de dominio en el equipo con **"ip domain name </nombre>"**
+**Partiremos configuramos un *hostname* y nombre de dominio
+1. **"hostname </nombre>"** para *hostname*
+2. **"ip domain name </nombre>"** para nombre de dominio
 	1. Esto es necesario ya que el FQDM **(Fully Qualified Domain Name = host name + domain name)** se usa para nombrar las llaves RSA
-2. Debemos generar un par de llaves públicas y privadas, usando **"crypto key generate rsa"**
+
+**Ahora crearemos el par de llaves pública y privada de encriptación**
+1. Con el comando **"crypto key generate rsa"**
 	1. Deberemos elegir el tamaño de las *keys*
 	2. Tamaño de *keys* para SSHv2 debe ser > 768 *bits*
 
+**Elegiremos la version 2 de SSH, para mejorar la seguridad**
+1. Con **"ip ssh version 2"**
+
+**Podemos configurar una ACL para limitar aún más las probabildiades de acceso**
+1. Con **"access-list </numero_o_nombre> permit host </ip>"**
+
 ### Configurando SSH
 
-1. Configuramos usuario y contraseña con **"enable secret </clave>"** y **"username </username> secret </clave>"** (VER Console Port Security)
-	1. Utilizar "secret" utiliza encriptación MD5
-2. Podemos configurar una ACL para restringir quien queremos que se pueda conectar por SSH
-3. elegimos la version de SSH: **#ip ssh version 2#**
-4. Usamos el comando **"line vty 0 15"** para permitir 16 conexiones simultaneas
-	1. Y entramos al modo de configuración de las líneas VTY
-5. Habilitamos autenticación con **"login local"**
-	1. VER CONSOLE PORT SECURITY
-	2. No podemos usar solo **"login"** para SSH
-6. Configuramos *timeout* con **"exec-timeout </minutos> </segudos>"**
-	1. Ver CONSOLE PORT SECURITY
-7. Ahora, con el comando **"transport input ssh"** configuramos que tipo de conexión queremos permitir en las "VTY Lines"
-	1. Con SSH solo permitimos SSH y ninguna otra
-8. Finalamente, con **"access-class </numero_o_nombre_de_ALC> {in|out}"** aplicamos la ACL a las "VTY lines"
+**Primero, tenemos que entrar al modo de configuración de las líneas VTY**
+1. Con **"line vty 0 15"**
+	1. Configura las 16 lineas disponibles
+
+**Ahora configuraremos el requerimiento de logearse para poder acceder a la línea**
+1. Con el comando previo **"login local"**
+	1. Usará los mismos usuarios y contraseñas configurados previamente
+	2. No se puede solo usar "login" para SSH
+
+**También podemos configurar el tiempo de inactividad**
+1. Con **"exec-timeout </minuto> </segundos>"**
+
+**Ahora restringiremos acceso a las vty solo con SSH**
+1. Con el comando **"transport input ssh"**
+
+**Finalmente, aplicamos la ACL que configuramos previamente**
+3. Con **"access-class </numero_o_nombre_de_ALC> {in|out}"** aplicamos la ACL a las "VTY lines"
 	1. "access-class" es para "VTY lines"
 	2. "ip access-group" es para una interfaz
 	3. esto se hace en el modo de config de la *line*
 
 ## Conectándonos mediante SSH
 
-Podemos conectarnos con el comando **"ssh -l [username p_address | ssh </usernam@ip_address>]"**
+Podemos conectarnos con el comando **"ssh -l [username ip_address | ssh </usernam@ip_address>]"**
 
 La que ip que se usa en el comando es la de la SVI

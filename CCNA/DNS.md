@@ -36,5 +36,7 @@ El "CNAME" es un nombre canónico que *mapea* un nombre a otro nombre.
 
 ## Configuración de un domain name
 
+Definen un área de control admistrativo en internet
+
 1. Usamos el comando **"ip domain name </nombre.x>"**
 	1. Automáticamente agregará este nombre de dominio a cualquier *hostname* que no tenga un dominio especifico

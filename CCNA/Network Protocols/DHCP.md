@@ -47,13 +47,14 @@ Esto se usa para que podamos tener un servidor DHCP centralizado, en vez de vari
 7. Podemos configurar el *lease time* con **"lease </dias> </horas> </minutos>"** o que sea infinito (no recomendado)
 
 - Podemos ver que clientes que fueron asignados direcciones IP con **"show ip dhcp binding"**
-- Podemos ver las *pools* que existen y los rangos de IP excluidos con el comando **"show running-config | include dhcp"**
+- Podemos ver las *pools* que existen y los rangos de IP excluidos con el comando **"show running-config | section dhcp"**
 
 ## Configuración DHCP Relay Agent
 
 1. Primero, debemos entrar a la interfaz conectada a la *subnet*
 2. Ingresamos el comando **"ip helper-address </ip_servidor_dhcp>"**
 	1. Recordar que el *router* debe tener como llegar al servidor
+	2. Este comando debe usarse en la interfaz que está conectada a los clientes DHCP
 3. Podemos revisar esa config. en **"show ip interface </interfaz>"**
 	1. Nos mostrará la IP del servidor
 

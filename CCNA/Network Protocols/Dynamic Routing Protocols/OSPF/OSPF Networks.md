@@ -4,7 +4,7 @@ The OSPF "network type" refers to the type of connection between [[OSPF]] neighb
 
 ## DR/BDR
 
-Es el rol que tomará cada *router* en al subnet. Su elección varía dependiendo del tipo de red.
+Es el rol que tomará cada *router* en la subnet. Su elección varía dependiendo del tipo de red.
 
 Se elige 1 DR y 1 BDR por cada *subnet*
 "DROther" solo pasaran al estado "Full" con DR's y BDR's. Y mantendrán estado "2-way" con otros *DRother's*. Esto significa que los *routers* solo intercambiarán LSA's con el DR y BDR y, DROther's no compartirán LSA's entre ellos.
