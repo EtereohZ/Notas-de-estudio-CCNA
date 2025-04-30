@@ -36,7 +36,7 @@
 5. Repetimos para cada VLAN
 
 **Ahora configuramos NTP**
-1. Elegimos e l *switch* como servidor con **"ntp master"**
+1. Elegimos un *switch* como servidor con **"ntp master"**
 
 
 

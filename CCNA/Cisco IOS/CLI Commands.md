@@ -130,7 +130,7 @@
 
 - **show vtp status**
 	- Nos muestra estado e info de VTP en el *switch*
-- **vtp mode </mod>**
+- **vtp mode </modo>**
 	- Elegimos el modo VTP que queremos
 - **vtp domain </nombre_dominio>**
 	- Elegimos o cambiamos el nombre del dominio [[VTP]]

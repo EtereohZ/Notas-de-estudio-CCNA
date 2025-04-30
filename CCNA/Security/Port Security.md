@@ -39,8 +39,9 @@ Manual:
 2. Ingresar el comando **"shutdown"** y luego **"no shutdown"**
 
 Usando "ErrDisable Recovery":
-1. Con el comando **"errdisable reovery cause </tipo_de_causa>"**
+1. Con el comando **"errdisable recovery cause </tipo_de_causa>"**
 	1. "psecure-violation" para cuando llega una dirección no autorizada
+	2. Reinicia la interfaz luego del tiempo indicado
 ***
 
 ### Show port-security interface

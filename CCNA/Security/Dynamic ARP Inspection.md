@@ -32,7 +32,7 @@ Se pueden configurar [[Access Control Lists|ACL's]] de ARP manualmente, para *ma
 1. Con **"ip arp inspection limit rate </paquetes> burst interval </segundos>"**
 
 **También podemos volver a activar la interfaz de forma manual o con "ErrDisable"**
-1. Con "errdisable recovery cause arp-inspection"
+1. Con **"errdisable recovery cause arp-inspection"**
 
 
 ### *Chequeos* opcionales
@@ -40,7 +40,6 @@ Se pueden configurar [[Access Control Lists|ACL's]] de ARP manualmente, para *ma
 Por defecto, DAI verifica el IP y MAC de origen en el mensaje, pero también se puede configurar para que *chequee* MAC de destino e IP's inesperados. Estas verificaciones se hacen de forma extra a las por defecto, elegir una no las reemplaza.
 
 **Esto se puede hacer con **
-
 1. **ip arp inspection validate [dst-mac | ip | src-mac]**
 
 

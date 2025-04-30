@@ -16,7 +16,7 @@ Los estándares para LAN's *wireless* están definidos en IEEE 802.11.
 		3. **Refracción**
 			1. La señal cambia de rumbo al entrar a un medio diferente
 		4. **Difracción**
-			1. Ocurre cuando una onda, al atravesar un orificio pequeño, se distorsiona y propaga en todas direcciones}
+			1. Ocurre cuando una onda, al atravesar un orificio pequeño, se distorsiona y propaga en todas direcciones
 		5. **Dispersión**
 			1. Separación de las ondas a ondas de distinta frecuencia al atravesar un material
 2. Otros equipos usando el mismo canal pueden causar interferencia
@@ -44,7 +44,7 @@ Wi-Fi usa 2 bandas de radio (rangos de frecuencia):
 #### Canales
 
 Cada banda se divide en multiples canales y, cada equipo está configurado para transmitir y recibir tráfico en uno o más de estos.
-En redes pequeñas con un solo *access point*, podemos usar cualquier canal. Pero en redes grandes con varios *access points*, es importante que no se usen canales que se superpongas, y así evitar interferencias.
+En redes pequeñas con un solo *access point*, podemos usar cualquier canal. Pero en redes grandes con varios *access points*, es importante que no se usen canales que se superpongan, y así evitar interferencias.
 En la banda **2.4 GHz**, se recomienda que se usan los canales 1, 6 y 11. Si ubicamos los *access points* en forma de panal de abeja, podemos proveer un area de completa cobertura sin generar interferencia entre canales
 
 ![[panal de abeja.png]]

@@ -20,7 +20,7 @@ Luego se envía al otro sistema y este realiza el proceso opuesto, se van removi
 		- Esto se refiere a la encriptación y desencriptación de la info cuando es recibida
 	- Tambien traduce entre distintos App layer formats
 		- Así se asegura de que el host que reciba la info la pueda entender
-- **Layer 6. Session layer**
+- **Layer 5. Session layer**
 	- Controla las sesiones entre 2 hosts que se estén comunicando
 	- Establece, maneja y cierra conexiones entre la aplicación local y la aplicación remota
 - **Layer 4. Transport layer**
@@ -38,13 +38,13 @@ Luego se envía al otro sistema y este realiza el proceso opuesto, se van removi
 		- El puerto de origen es elegido al azar por el PC, y ayuda a identificar la sesión
 	- Agrega un L4 header al segmento de información
 **Hasta este punto, la unidad de información se llama SEGMENTO o SEGMENT**
-- Layer 3. Network layer
+- **Layer 3. Network layer**
 	- Provee conectividad entre hosts en diferentes redes (fuera de la [[LAN]])
 	- Provee direcciones [[IPv4 Addressing|IP]]
 	- Elige el mejor camino entre la fuente y el destino de la información
 		- Pueden haber muchos caminos
 	- [[Router|Routers]] trabajan en L3
-	- Agrega un L3 header, que incluye la dirección [[IPv4 Addressing|IP]] de origen y destino al segmento
+	- Agrega un [[IPv4 Header|L3 header]], que incluye la dirección [[IPv4 Addressing|IP]] de origen y destino al segmento
 	- Con el L3 header, el segmento pasa a llamarse **packet** o **paquete**
 	- L3 protocols
 		- [[OSPF]]
@@ -55,11 +55,11 @@ Luego se envía al otro sistema y este realiza el proceso opuesto, se van removi
 		- Por ejemplo, [[UTP Cables|cables UTP]]
 	- Detecta y posiblemente corrige errores en la Physical layer
 	- [[Switch|Switches]] operan en L2
-	- Agrega un L2 header y un L2 trailer que usan direcciones
+	- Agrega un [[Ethernet Frame|L2 header y un L2 trailer]] que usan direcciones
 	- Con el L2 header y trailer, pasa a llamarse **frame**
 	- L2 protocols
 		- [[STP]]
-- Layer 1. Physical layer
+- **Layer 1. Physical layer**
 	- Define las características del medio usado para transferir info entre equipos
 		- Por ejemplo, niveles de voltage,  [[Connector|conectores físicos]], especificaciones de cables, pines, distancias máximas de transmisión, 
 	- bits son convertidos en señales eléctricas o radio

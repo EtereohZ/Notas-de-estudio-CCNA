@@ -43,7 +43,7 @@ Se divide en 2 tipos de ACL's:
 1. Extended Numbered
 2. Extended Named
 
-Extended ACL's deben configurarse lo mas cercano a la fuenta como sea posible, a diferencia de los *standard*.
+Extended ACL's deben configurarse lo mas cercano a la fuente como sea posible, a diferencia de los *standard*.
 #### Configuración
 1. Entramos al modo de configuración con "ip accesss-list {number|name}"
 2. Configuramos una *entry* con "[entry_number] {deny|permit} {[protocol]  [src-ip]  [dst-ip]}"

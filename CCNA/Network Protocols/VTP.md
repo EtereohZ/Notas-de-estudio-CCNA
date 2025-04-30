@@ -1,5 +1,5 @@
 VLAN Trunking Protocol allows you to configure [[vlan|VLANs]] on a central VTP [[server]] [[switch]], and other switches (VTP clients) will synchronize their VLAN database to the server.
-It is designer for large networks with many VLANs, so that you don't have to configure each VLAN on every switch.
+It is designed for large networks with many VLANs, so that you don't have to configure each VLAN on every switch.
 It's rarely used, and it's recommended that it not be used.
 
 Hay 3 versiones: 1, 2 y 3 

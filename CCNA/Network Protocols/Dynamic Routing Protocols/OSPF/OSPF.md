@@ -1,6 +1,7 @@
 Stands for "Open Shortest Path First". Uses the same name algorithm (aka Dijkstra's algorithm)
 
 Es un protocolo de routeo dinámico de tipo *[[Dynamic Routing|link state]]*
+Revisar [[Dynamic Routing|generalidades del *routeo* dinámico]]
 
 - LSA: Link State Advertisement
 	- Son organizados en una LSDB
