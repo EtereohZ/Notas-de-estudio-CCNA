@@ -13,4 +13,4 @@ En [[Cisco CLI]], un "." significa que un ping fallo y un "!" significa que el p
 - Porque como PC1 no conocía la dirección MAC de PC2, tuvo que usar ARP y en el tiempo que demoró en obtener su MAC, el primer ping falló.
 
 ###### Imagen de un ping en Cisco CLI:
-![[Captura de pantalla 2024-08-23 180213.png]]
+![[cisco_cli_ping.png]]

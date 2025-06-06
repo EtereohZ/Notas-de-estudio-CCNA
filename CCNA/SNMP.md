@@ -59,7 +59,7 @@ Son organizados de manera jerárquica
 
 ## SNMP Messages
 
-![[Captura de pantalla 2024-10-16 154230.png]]
+![[SNMP_messages.png]]
 
 Trap: Se envía una notificación del agente al *manager*. El *manager* no envía una respuesta afirmando que recibió el mensaje, por lo que se considera poco confiable.
 Inform: Un mensaje de notificación que es *acknowledged* con un mensaje de respuesta

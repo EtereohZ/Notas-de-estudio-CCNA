@@ -5,10 +5,10 @@
 - Hay algunas aplicaciones que usan UDP y en la misma aplicación le agregan confiabilidad
 - Algunas aplicaciones usan TCP y UDP, como DNS
 
-![[Screenshot 2024-10-07 152250.png]]
+![[TCP_&_UDP.png]]
 
 ## Puertos
 
 Asociados a su aplicación L7
 
-![[Screenshot 2024-10-07 152739.png]]
+![[TCP_&_UDP_protocols.png]]

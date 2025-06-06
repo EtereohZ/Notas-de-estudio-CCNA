@@ -24,13 +24,13 @@ Pertenece a los protocolos de [[dynamic routing]]
 	- Ver foto justo abajo
 		- Los números antes del "/" son las "feasible distance"
 		- Los números después del "/" son la "reported distance"
-![[Captura de pantalla 2024-09-11 175953.png]]
+![[EIGRP_map.png]]
 - **Successor**: La ruta con la métrica menor (la mejor ruta)
 - **Feasible Successor**: Una ruta alterna al destino que cumple con la ***Feasibility Condition***
 - **Feasibility Condition**: Se considerará como "feasible successor" si la "reported distance" es **MENOR**  que la "feasible distance" del "successor"
 	- Dicho de otra forma, si la "reported distance" (de la ruta alternativa) es **menor** que la "feasible distance" del "successor" (la mejor ruta actual), se puede considerar como el **"feasible successor"**. Por lo que cumpliría la "feasibility condition"
 - En rojo la "feasible distance" y en morado la "reported distance" 
-![[Captura de pantalla 2024-09-11 181158.png]]
+![[feasible_distance_&_reported_distance.png]]
 ## Wildcard Masks
 
 It's an inverted subnet mask
@@ -44,7 +44,7 @@ Una subnetmask típica de 255.255.255.0 sería equivalente a una *wildcard* de 0
 Determina que porción de los bits debe calzar para que se active EIGRP
 Mientras mas grande sea la *wildcard* (ej. 7.255.255.255) menos especifica será, y mientras mas pequeña sea (ej. 0.0.0.0, sería una /32 *wildcard), mas especifica será
 **LOS NUMEROS QUE QUEDEN A LA IZQUIERDA DE LOS 1'S DE LA WILDCARD (los 0's que sobren) SERÁN LOS QUE TENGAN QUE CALZAR ENTRE LOS IP'S**
-![[Captura de pantalla 2024-09-11 175756.png]]
+![[EIGRP_wildcard.png]]
 
 
 ## Configuración

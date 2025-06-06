@@ -33,8 +33,8 @@ Si no hay *matching routes* en la *matching table* del router, botará el paquet
  ¿Qué pasa si el router recibe un paquete que calza con una ruta local y una ruta conectada?
  El router elegirá la ruta que haga *match* mas específicamente. **Ver foto**.
  Con mas específicamente se refiere a las rutas con *match* que tengan el prefijo más largo, en este caso, /32
- Para eso sirven las rutas locales, el router podrá determinar si el paquete es para el, y que no lo forwardee.
- ![[Captura de pantalla 2024-08-28 153354.png|]]
+ Para eso sirven las rutas locales, el router podrá determinar si el paquete es para el, y que no lo *forwardee*.
+ ![[routing_table_info.png]]
  "192.168.1.0/24 is variably subnetted, 2 subnets, 2 masks"
  There are two routes to subnets that fit within the 192.168.1.0/24 class C network, with two different netmasks (/24 and /32).
  Explicado en [[CCNA/Subnetting/Subnetting|subnets]].

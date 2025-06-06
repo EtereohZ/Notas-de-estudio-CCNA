@@ -12,6 +12,7 @@ Consiste en 2 niveles de jerarquía:
 
 Para ayudar a la escalabilidad de grandes redes [[LAN]], se recomienda agregar un nivel superior si existen mas de 3 "distribution layers" en un mismo lugar. Los que nos lleva al siguiente diseño.
 
+![[two-tier_lan_design.png]]
 
 ## Three-tier Campus LAN Design
 
@@ -24,7 +25,7 @@ En este diseño de red, ahora tenemos 3 distintos niveles de jerarquía:
 	3. Operaciones de alta demanda de CPU deben evitarse
 	4. Solo existen conexiones L3
 
-![[Three-tier layer design.png]]
+![[three-tier_lan_design.png]]
 
 
 

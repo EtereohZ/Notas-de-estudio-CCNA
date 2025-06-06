@@ -70,7 +70,7 @@ Debido a que PCP solo se encuentra en el header 802.1Q, solo se puede usar en es
 1. Interfaces *[[VLAN|trunk]]*
 2. Interfaces *access* con una *[[IP Phones|voice VLAN]]*
 
- ![[Captura de pantalla 2024-10-25 150022.png]]
+ ![[PCP_values.png]]
 
 ### DSCP
 

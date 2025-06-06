@@ -1,25 +1,25 @@
 El largo del *header* de IPv6 siempre será de 40 *bytes*
 
-- **Versión Field**
+- **Versión**
 	- 4 *bits* de largo
 	- Indica la version de IP que se está usando
 	- Valor de 6 o 0110 (binario) indica IPv6
-- **Traffic Class Field**
+- **Traffic Class**
 	- 8 *bits* de largo
 	- Usado para QoS para **indicar tráfico de alta prioridad**
 		- Teléfono, videollamadas, llamadas
-- **Flow Label Field**
+- **Flow Label**
 	- 20 *bits* de largo
 	- Usado para **identificar "flujos"**, comunicaciones entre orígenes y destinos específicos 
-- **Payload Length Field**
+- **Payload Length**
 	- 16 *bits* de largo
 	- Indica el **largo del *payload*** (segmento encapsulado) en *bytes*
-- **Next Header Field**
+- **Next Header**
 	- 8 *bits* de largo
 	- Indica el **tipo de protocolo L4 encapsulado**, por ej. TCP/UDP
-- **Hop Limit Field**
+- **Hop Limit**
 	- 8 *bits* de largo
-	- Misma función que **"TTL"** en [[IPv4 Addressing]]
+	- Misma función que **"TTL"** en [[IPv4 Header]]
 	- Valor disminuye en 1 cada vez que un [[Router|router]] lo *forwardea*
 - **Source Address/Destination Address**
 	- 128 *bits* de largo cada uno

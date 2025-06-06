@@ -45,4 +45,4 @@ Sí un *frame* tiene un *payload* de menor de **46 bytes**, se le agrega un ***p
 **Importante**: Revisar frecuentemente [[Hexadecimal - Decimal - Binario]].
 #### Diagrama
 
-![[Captura de pantalla 2024-08-23 150151.png]]
+![[ethernet_frame_structure.png]]

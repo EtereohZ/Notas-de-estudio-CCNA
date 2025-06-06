@@ -24,7 +24,7 @@ Se refiere a las operaciones que realizamos cuando usamos REST API's. Significa 
 HTTP usa "verbs" o "methods" para *mapear* a las operaciones CRUD. Cuando un cliente HTTP envía una solicitud al servidor HTTP, este incluye un "verb" que indica lo que el cliente quiere hacer.
 Es por esto que las REST API's típicamente usan HTTP como su protocolo [[OSI|L7]] para comunicarse a través de la red.
 
-![[HTTP verbs.png]]
+![[HTTP_verbs.png]]
 
 #### HTTP Request
 

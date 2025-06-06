@@ -76,7 +76,7 @@ Se usa para identificar a que VLAN pertenece el *frame*
 					- 12 *bits* de largo
 						- 2<sup>12</sup> = 4096 VLAN's totales
 					- IMPORTANTE
-![[Captura de pantalla 2024-08-31 172941.png]]
+![[dot1q_structure.png]]
 #### Native VLAN
 - Es una característica del protocolo 802.1Q
 - Su *default* es VLAN 1 en todos los *trunk ports*

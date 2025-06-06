@@ -50,4 +50,4 @@ ES usado por la herramienta de automatización de red "Ansible".
 - "Keys" y "values" se representan como "key:value"
 
 Comparación entre JSON y YAML
-![[JSON vs YAML.png]]
+![[JSON_vs_YAML.png]]

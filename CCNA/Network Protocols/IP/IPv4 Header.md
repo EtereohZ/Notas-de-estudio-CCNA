@@ -74,4 +74,4 @@
 	- 0 - 320 bits de largo
 	- Si el **IHL** es > 5, significa que *Options* está presente
 
-![[Pasted image 20240827175205.png]]
+![[IPv4_header_structure.png]]

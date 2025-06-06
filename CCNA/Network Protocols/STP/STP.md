@@ -60,7 +60,7 @@ Un puerto puede encontrarse en un estado "estable" o "transicional", dependiendo
 
 ##### Spanning Tree Timers
 
-![[Captura de pantalla 2024-09-05 171023.png]]
+![[STP_timers.png]]
 
 Si no se reciben BPDU's y en tiempo del "Max Age" llega a 0, el [[Switch|switch]] reevaluará sus decisiones STP, incluyendo el "root bridge", "root port" y sus puertos designados/no designados.
 Si un puerto no designado se elige como "root port", va a **transicionar** del estado bloqueado a "Listening" --> "Learning" y finalmente a "Forwarding".
@@ -98,11 +98,11 @@ Nota: Designated port == forwarding state
 		- Cisco switches usan una versión de STP llamada PVST (Per-VLAN Spanning Tree). PVST usa una instancia separada en cada VLAN, por lo que en cada VLAN hay diferentes interfaces *forwardeando*/bloqueando.
 		- Igual a VLAN ID
 		- 12 Bits de largo
-![[Captura de pantalla 2024-09-04 174633.png]]
+![[bridgeid_structure.png]]
 Esencialmente, Es la dirección [[MAC Address|MAC]] la que determina quien será el "root bridge", excepto en PVST.
 
 
 
 "root costs" a continuación
-![[Captura de pantalla 2024-09-04 182030.png]]
+![[stop_root_cost.png]]
 

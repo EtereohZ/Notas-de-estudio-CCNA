@@ -166,7 +166,7 @@ Cada vez que se reciba un "hello", un temporizador llamado **"dead timer"** se r
 Si se dejan de recibir *hello's* y el temporizador llega a 0, se eliminará a ese vecino.
 
 Resumen de los distintos tipos de mensaje:
-![[Captura de pantalla 2024-09-21 170904.png]]
+![[OSPF_messages.png]]
 
 
 

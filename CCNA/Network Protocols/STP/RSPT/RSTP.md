@@ -1,12 +1,12 @@
 - Elige un "root bridge" con las mismas reglas que [[STP]]
 - Elige "root ports" con las mismas reglas que STP
 - Elige puertos designados con las mismas reglas que STP
-- Se cambia el costo STP según la velocidad: ![[Captura de pantalla 2024-09-09 160041.png]]
+- Se cambia el costo STP según la velocidad: ![[RSTP_cost.png]]
 - Se cambian los estados de los puertos: 
 	- Un puerto deshabilitado ahora se llama se encuentra en el estado "discarding"
 	- Un puerto que se encuentra bloqueando tráfico también se encuentra "discarding"
 	- Sigue existiendo "forwarding" y "learning"
-![[Captura de pantalla 2024-09-09 160303.png]]
+![[RSTP_port_state.png]]
 ## Roles de puertos
 - **Root port**
 - **Designated port**

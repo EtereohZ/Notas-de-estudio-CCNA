@@ -40,15 +40,18 @@ Si queremos averiguar el broadcast address de una determinada red, Hacemos lo mi
 #### PARA CALCULAR LA NETMASK
 1. Pasar todos los bits de la porción **DE LA RED** a 1's
 2. Convertir a decimal
-#### **La RED toma bits del HOST, NO al revés**
+#### **La RED toma bits de la porción de lost HOST, NO al revés**
 
 
-![[Captura de pantalla 2024-08-29 163113.png]]
+![[usable_addresses_calculation.png]]
 
 
-![[Captura de pantalla 2024-08-29 163126.png]]
+![[CIDR_notation.png]]
 
-![[Captura de pantalla 2024-08-30 152659 1.png]]
+![[host_and_subnet _number.png]]
+
+
+Ignorar de aquí hasta abajo hasta que me den ganas de hacerlo entendible.
 
 
 127.16.0.0/16
@@ -60,15 +63,19 @@ Le pasamos 2 bits a la porción de la red 2<sup>2</sup>
 
 127
 
+**Ejercicio:**
+
 Te dan la red 10.0.0.0/8. Debes crear 2000 subnets que deben ser distribuidas.
 Cual debe ser el largo del prefijo?
 cuantos hosts deben haber en cada subnet?
 
-La red debe tomar 11 bits para cread 2000 subnets, específicamente se pueden crear 2048
+La red debe tomar 11 bits para crear 2000 subnets, específicamente se pueden crear 2048: 
+- 2<sup>11</sup> = posibles subnets
 00001010.**00000000.000**00000.00000000
-Los 13 bits que le quedan al hostbit nos permite tener 8192 hosts
+Los 13 bits que le quedan al hostbit nos permite tener 8190 hosts:
+- 2<sup>13</sup> - 2 =  posibles hosts
 
-11111111.11111111.11100000
+11111111.11111111.11100000.00000000
 Nuestro prefijo será /19
 255.255.224.0 es la subnetmask
 
@@ -88,7 +95,7 @@ La red es 10.192.0.0/11
 Para el broadcast pasamos todos los hostbits a 1 >> 00001010.**110**11111.11111111.11111111
 10.223.255.255/11
 3. 
-First usable address es10.192.0.1/11
+First usable address es 10.192.0.1/11
 4. 
 Last usable address es 10.223.255.254/11
 5. 
@@ -97,6 +104,12 @@ Numero de hosts 2<sup>21</sup> - 2 es 2.097.150
 subnetmask es 11111111.11100000.0000000 >>255.224.0.0
 
 
+
+
+
+
+
+Ignorar desde aquí para abajo
 
 192.168.1.0
 

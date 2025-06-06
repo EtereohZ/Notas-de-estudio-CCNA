@@ -10,7 +10,7 @@ Pasos
 2. Asignar la mas grande que venga
 3. Repetir hasta asignar todas
 Se tiene que mantener la continuidad
-![[Captura de pantalla 2024-08-30 175216.png]]
+![[VLSM.png]]
 
 #### To LAN A
 192.168.1.0/24 requiere 110 hosts

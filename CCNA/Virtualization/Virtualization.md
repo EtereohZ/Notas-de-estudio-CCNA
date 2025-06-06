@@ -13,5 +13,5 @@ Existen 2 tipos distintos que son usados:
 
 ## Conectando VM's a la red
 
-LAs VM's se conectan entre ellas y con la red externa mediante [[Switch|switches]] virtuales que corren en el hypervisor Estos pueden funcionar de manera normal, con puertos *trunk* y *access*, uso de [[VLAN|VLAN's]], etc.
+LAs VM's se conectan entre ellas y con la red externa mediante [[Switch|switches]] virtuales que corren en el hipervisor Estos pueden funcionar de manera normal, con puertos *trunk* y *access*, uso de [[VLAN|VLAN's]], etc.
 Las interfaces en el *switch* virtual se conectan a la NIC del servidor para comunicarse con la red externa.

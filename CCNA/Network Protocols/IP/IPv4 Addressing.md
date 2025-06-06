@@ -43,4 +43,4 @@ Si un equipo envía cualquier trafico de red a alguna dirección en ese rango, s
 	- Las direcciones en la clase **D** están reservadas para direcciones multicast.
 - Direcciones clase E
 	- Las direcciones clase **E** están reservadas para direcciones experimentales
-![[Captura de pantalla 2024-08-26 160119.png]]
+![[IPv4_addressing_class.png]]

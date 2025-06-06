@@ -72,7 +72,7 @@ Todos los equipos en un mismo *set* comparten el mismo **SSID** (service set ide
 	- Un **BSSID** es usado para identificar al AP
 		- Es la direccion [[MAC Address|MAC]]
 	- Para ser parte de la BSS, los equipos deben solicitar asociarse
-	- La **BSA** (Basic Service Area) es el área de servicio alrededor de la AP donde la señal se puede usar ![[Service set- BSS.png]]
+	- La **BSA** (Basic Service Area) es el área de servicio alrededor de la AP donde la señal se puede usar ![[service_set_BSS.png]]
 - **ESS**
 	- Se usa para crear un gran red inalámbrica [[LAN]] más allá del rango de una AP
 	- Cada AP tendrá el **mismo SSID** y **distinto BSSID**

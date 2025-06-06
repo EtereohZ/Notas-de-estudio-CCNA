@@ -14,5 +14,5 @@ El controlador puede interactuar con los equipos de red usando [[REST API's|API'
 - **Infrastructure Layer**
 	- Contiene los equipos de red que son responsables de *forwardear* los mensajes a través de la red
 
-![[arquitectura SDN.png]]
+![[SDN_architecture.png]]
 

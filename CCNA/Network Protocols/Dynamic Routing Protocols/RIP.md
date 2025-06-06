@@ -62,4 +62,4 @@ Routing Information Protocol
 	1. así anunciará la *default route* a los otros
 9. Usamos el comando "show ip protocols"
 	1. Puede usarse también en [[EIGRP]] y [[OSPF]]
-![[Captura de pantalla 2024-09-10 174226.png]]
+![[RIP_example.png]]

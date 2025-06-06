@@ -60,7 +60,7 @@ Muy parecido al "root cost" de [[STP]].
 	- Esto se llama **ECMP** (Equal Cost Multi-Path)
 
 Imagen resumen de las métricas que usa cada protocolo
-![[Captura de pantalla 2024-09-10 153329.png]]
+![[dynamic_routing_metric.png]]
 
 ## Administrative Distance
 
@@ -71,4 +71,4 @@ Podemos cambiar la AD, según lo que queramos.
 Si configuramos la AD de una ruta estática para que sea mas alta que una aprendida por un protocolo de *routeo* dinámico, pasará a llamarse "floating static route".
 La ruta estática pasará a ser inactiva, a menos que la ruta aprendida dinámicamente sea removida.
 
-Mapa de cada AD según protocolo![[Captura de pantalla 2024-09-10 155959.png]]
+Mapa de cada AD según protocolo![[routing_AD.png]]

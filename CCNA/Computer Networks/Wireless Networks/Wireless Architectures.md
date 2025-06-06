@@ -3,7 +3,7 @@
 ## 802.11 Frame Format
 
 Algunos campos difieren entre versiones
-![[Frame 802.11.png]]
+![[802.11_frame.png]]
 
 - **Frame Control**
 	- Da información acerca del tipo de mensaje y subtipo
@@ -130,7 +130,7 @@ Dado que todo el tráfico es los clientes inalámbricos es enviado por un túnel
 
 Imagen comparativa. A la izquierda la *lightweight* y a la derecha la autónoma
 
-![[AP autonoma y lightweight.png]]
+![[lightweight_&_autonomous_AP.png]]
 
 
 ### Cloud Based AP's

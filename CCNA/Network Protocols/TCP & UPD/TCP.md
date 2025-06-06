@@ -27,12 +27,12 @@ TCP utiliza un "Four-Way-Handshake" dado que involucra 4 mensajes que se enviar�
 
 
 
-## TCP - Secuenciación y *Acknowledgment*
+## TCP - Secuencia y *Acknowledgment*
 
-Cuando el PC envía en primer "SYN" le agrega un número de secuencia aleatorio. Luego, cuando el servidor responde con "SYN ACK", este le agrega otro número de secuencia aleatorio y hace un *acknowledge* del número de secuencia que puso PC, agregando el número siguiente que espera recibir en su "ACK".
-Finalmente, PC pone como su número de secuencia el número en el "ACK" que recibió del servidor y en su "ACK" agrega el número siguiente que el servidor puso como su número de secuencia.
+Cuando un equipo envía en primer "SYN" le agrega un número de secuencia aleatorio. Luego, cuando el servidor responde con "SYN ACK", este le agrega otro número de secuencia aleatorio y hace un *acknowledge* del número de secuencia que puso el equipo, agregando el número siguiente que espera recibir en su "ACK".
+Finalmente, el equipo agrega como su número de secuencia el número en el "ACK" que recibió del servidor y en su "ACK" agrega el número siguiente que el servidor puso como su número de secuencia.
 
-![[Screenshot 2024-10-07 150029.png]]
+![[TCP_sequence.png]]
 
 
 

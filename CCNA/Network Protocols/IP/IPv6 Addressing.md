@@ -111,7 +111,7 @@ Se puede configurar con el comando "ipv6 address autoconfig"
 - Terminado en ":1" actúa como si fuera *broadcast*
 
 Propósito de distintos *multicast*
-![[Screenshot 2024-10-08 160651 1.png]]
+![[IPv6_multicast.png]]
 
 #### Multicast Address Scopes
 
@@ -125,7 +125,7 @@ Scopes:
 - **Global** (FF0E): Sin límites
 
 Imagen representativa de los *scopes:
-![[Screenshot 2024-10-08 160508.png]]
+![[IPv6_scopes.png]]
 
 
 
@@ -142,7 +142,7 @@ No hay rango de direcciones especificas para "anycast".
 - La podemos revisar con "show ipv6 interface </interfaz>"
 
 Cuadro comparativo:
-![[Screenshot 2024-10-08 160914.png|200x700]]
+![[routing_schemes.png|200x700]]
 
 ### Otras
 

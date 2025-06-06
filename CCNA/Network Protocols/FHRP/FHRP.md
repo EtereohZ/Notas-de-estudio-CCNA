@@ -12,4 +12,4 @@ Veremos 3 tipos distintos:
 - [[GLBP]]
 
 Cuadro resumen
-![[Captura de pantalla 2024-10-05 171346.png]]
+![[FHRP_protocols.png]]

@@ -8,14 +8,14 @@ seq: No es tan importante
 time stamp: Siempre incluir en mensajes
 facility: que proceso originó el mensaje, ej. OSPF
 
-![[Captura de pantalla 2024-10-16 163418.png]]
+![[syslog_message_format.png]]
 
 ### Niveles de severidad Syslog
 
 Van de 0 a 7, 0 siendo el más severo de todos.
 Nivel 5 se llama "Notice", pero en la [[Cisco CLI]] se llama "Notification".
 
-![[Captura de pantalla 2024-10-16 163650.png]]
+![[syslost_severity_levels.png]]
 
 
 
