@@ -13,7 +13,6 @@ El "CNAME" es un nombre canónico que *mapea* un nombre a otro nombre.
 
 ## Configuración
 
-
 ### Configuración de *router* como servidor DNS
 
 1. Usamos el comando **"ip dns server"** para configurar al [[Router|router]] como servidor DNS

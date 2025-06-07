@@ -1,8 +1,8 @@
 # Notas de estudio CCNA
 
-Basado en las clases y laboratorios de https://www.youtube.com/@JeremysITLab
+Basado en las clases y laboratorios de https://www.youtube.com/@JeremysITLab.
 
-Recomiendo las fuentes [Atkinson Hyperlegible](https://www.brailleinstitute.org/freefont/#download) o [JetBrains Mono](https://www.jetbrains.com/lp/mono/)
+Recomiendo las fuentes [Atkinson Hyperlegible](https://www.brailleinstitute.org/freefont/#download) o [JetBrains Mono](https://www.jetbrains.com/lp/mono/).
 
 Requerimientos:
 - Obsidian -> https://obsidian.md/

@@ -20,7 +20,7 @@ También podemos usar /32 cuando queremos crear una ruta estática a un *host* e
 Si queremos averiguar a que subnet pertenece determinada dirección IP:
 1. escribir la dirección en binario
 2. Cambiar todos los hostbits a 0
-3. Cambiar el nuevo numero a decimal
+3. Cambiar el nuevo número a decimal
 
 #### **EN *BOLD* QUEDARÁN MARCADOS LOS BITS QUE SE LE PRESTAN AL HOST***
 
