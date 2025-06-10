@@ -5,7 +5,7 @@ Routing Information Protocol
 	- Máximo de 15 *hops*
 - Posee 3 versiones
 	- RIPv1 y RIPv2: Usan [[IPv4 Addressing|IPV4]]
-	- RIPng: Usa [[IPv6]]
+	- RIPng: Usa [[IPv6 Addressing|IPv6]]
 - Usa 2 tipos de mensajes
 	- **Request**
 		- Le pide a otros [[Router|routers]] que estén usando RIP que envíen su *routing table*
@@ -16,6 +16,7 @@ Routing Information Protocol
 ## Versiones
 
 ### RIPv1
+
 - Versión muy antigua y casi ni se usa
 	- **No usar**
 - Solo anuncia direcciones *classful* (clase A, B, C)
@@ -24,6 +25,7 @@ Routing Information Protocol
 - Sus mensajes son *broadcasteados* a 255.255.255.255
 
 ### RIPv2
+
 - Soporta VLSM y CIDR
 - Incluye la info de las *netmask* en sus anuncios
 - Sus mensajes son *multicast* a **224.0.0.9**

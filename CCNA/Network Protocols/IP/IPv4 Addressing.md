@@ -3,7 +3,8 @@
 Un IPv4 tiene un largo de 32 bits, por lo que cada grupo de números representa 8 bits o 1 byte.
 Nota: Revisar el *header* en [[IPv4 Header]]
 
-Dirección IP de ejemplo: 192.168.1.0/24
+Dirección IP de ejemplo: 192.168.1.0/24:
+
 - Cada grupo de números es una representación de [[Hexadecimal - Decimal - Binario|binario]] 
 - Los primero 3 grupos de números representan la red en sí, el **último numero** representa a **equipos específicos**.
 	- El prefijo **determina** que porción del numero pertenece a la **porción de la red**

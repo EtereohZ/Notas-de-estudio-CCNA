@@ -6,13 +6,16 @@ Como elige que puertos están *forwardeando* y que puertos están bloqueando, ST
 
 El estándar actual es 802.1s, todos los *switches* Cisco lo ocupan por defecto, además de [[RSTP]]. El STP estándar solo permite 1 instancia para todas las [[VLAN|VLAN's]], al contrario de [[PVST+]] y su versión actualizada, [[RSTP|Rapid PVST+]] y la versión actualizada de STP, Multiple Spanning Tree Protocol (802.1S). El estándar del STP clásico es 802.1D
 
-#### Broadcast Storms
+## Broadcast Storms
+
 Es cuando se forma un bucle infinito de *broadcast frames* y terminan congestionando la red.
 Ese no es el único problema, cada vez que el mismo *frame* llega al [[Switch|switch]] desde distintas interfaces, el *switch* estará continuamente actualizando su [[MAC Address|MAC address table]]. Eso se llama **MAC Address Flapping**.
 
-#### ¿Cómo funciona STP?
+## ¿Cómo funciona STP?
+
 Existe un proceso que STP usa para determinar que puertos deberían estar bloqueados o *forwardeando*:
-*Switches* mandan/reciben  "Hello BPDU's" desde todas sus interfaces, esto lo usan para anunciarse y saber de otros *switches* , y ocurre cada 2 segundos. Si un *switch* recibe un "Hello BPDU" en una interface, sabrá que esa interface está conectada a otro *switch* (solo *switch* usa SPT).
+*Switches* mandan/reciben  "Hello BPDU's" desde todas sus interfaces, esto lo usan para anunciarse y saber de otros *switches* , y ocurre cada 2 segundos. Si un *switch* recibe un "Hello BPDU" en una interface, sabrá que esa interface está conectada a otro *switch* (solo *switch* usa SPT). 
+La vida máxima de un BPDU es de 20 segundos.
 
 Los *switches* usan un **campo** en el STP BDPU, el campo "Bridge ID", para elegir a un "root bridge" para la red. El *switch* con el "Bridge ID" mas bajo se convierte en el "root bridge". El BDPU también lleva el costo acumulado del "root cost", que va incrementando a medida que ese BPDU es *forwardeado* a través de la red. Gracias a ese costo es que los *switches* sabrán que puerto elegir como "root port".
 El "root cost" solo incrementa cuando llega a un nuevo puerto, no cuando sale.
@@ -21,12 +24,13 @@ Cuando un *switch* sea elegido como "root bridge", todos sus puertos se converti
 
 Luego, **cada dominio de colisión** entre *switches* restantes deberán elegir 1 puerto designado entre ellos, donde **una** interfaz será seleccionada como puerto designado y la otra estará bloqueada.
 
-Recordemos usar el [[CLI Commands|comando]] "show spanning-tree" para revisar 
+Recordemos usar el [[CLI Commands|comando]] **"show spanning-tree"** para revisar.
 
 Si el *switch* no recibe BPDU's, sabe que es seguro entrar en modo *forwarding*.
 **Las prioridades y quien será "root bridge" o no varían según cada VLAN en PVST**
 
-##### Estados de un puerto STP
+### Estados de un puerto STP
+
 Un puerto puede encontrarse en un estado "estable" o "transicional", dependiendo de si ya está configurado o está en proceso/ocurrieron cambios en la red, respectivamente.
 1. **Blocking**
 	1. Estable
@@ -58,6 +62,7 @@ Un puerto puede encontrarse en un estado "estable" o "transicional", dependiendo
 5. **Disabled**
 	1. Fue desactivada
 
+![[STP_port_states.png]]
 ##### Spanning Tree Timers
 
 ![[STP_timers.png]]
@@ -67,6 +72,7 @@ Si un puerto no designado se elige como "root port", va a **transicionar** del e
 
 Los tiempo determinados en el "root bridge" determinan los tiempos para toda la red.
 ### Pasos de STP
+
 1. El *switch* con el menor "bridge ID" es elegido como el "root bridge". Todos sus puertos son designados como puertos designados
 	1. Si hay empate, se usa la dirección MAC
 2. Cada *switch* restante elegirá una de sus interfaces como "**root port**". La interface con el "root cost" mas bajo será el "root port"
@@ -74,9 +80,10 @@ Los tiempo determinados en el "root bridge" determinan los tiempos para toda la 
 	2. El costo dependerá de la velocidad de la interface, a mayor velocidad, menor costo
 	4. El "root cost"  es el costo total de la interfaz del *switch* con la interfaz del *switch* que está conectado a él.
 		1. En caso de empate, se elige la menor "bridge ID" del vecino
-			1. Y si no, se elige el "port ID" de de la interfaz del *switch* vecino/conectado
-				1. Esto se ven en el [[CLI Commands|comando]] "show spanning-tree" en "Prio.Nbr" 
-				2. Se elige el que tenga **numero menor**
+			1. Y si no, se elige la interfaz que esté conectado a la interfaz del vecino que tenga el "port ID" más bajo
+				1. Es por defecto "128" + el número del puerto
+				2. Esto se ven en el comando **"show spanning-tree"** bajo "Prio.Nbr" 
+				3. Se elige el que tenga **numero menor**
 	5. Puertos conectados al "root port" siempre serán puertos designados
 3. Cada dominio de colisión (entre 2 *switches*) restante debe elegir **una** interfaz como puerto designado
 	1. Elegir la que tenga menor "root cost"
@@ -90,19 +97,61 @@ Nota: Designated port == forwarding state
 - Una vez que la topología está lista y todos los *switches* se ponen de acuerdo en un "root bridge", solo el "root bridge" envía BPDU's.
 - Otros *switches* en la red harán *forward* de BPDU's, pero no generarán sus propios.
 
-##### Separación del bridge ID
+### Separación del bridge ID
+
 - Dividido en
 	- Bridge Priority
-		- 4 bits de largo
-	- Extended System ID
-		- Cisco switches usan una versión de STP llamada PVST (Per-VLAN Spanning Tree). PVST usa una instancia separada en cada VLAN, por lo que en cada VLAN hay diferentes interfaces *forwardeando*/bloqueando.
-		- Igual a VLAN ID
-		- 12 Bits de largo
+		- Dividido en:
+		1. Bridge Priority
+			- 4 bits de largo
+		2. Extended System ID
+			- Cisco switches usan una versión de STP llamada PVST (Per-VLAN Spanning Tree). PVST usa una instancia separada en cada VLAN, por lo que en cada VLAN hay diferentes interfaces *forwardeando*/bloqueando.
+			- Igual a VLAN ID
+			- 12 Bits de largo
+	- MAC Address
+		- 48 bits
 ![[bridgeid_structure.png]]
 Esencialmente, Es la dirección [[MAC Address|MAC]] la que determina quien será el "root bridge", excepto en PVST.
-
-
 
 "root costs" a continuación
 ![[stop_root_cost.png]]
 
+## Configuración
+
+
+**Antes de configurar, revisaremos comandos informativos**
+1. **"show spanning-tree"**
+	- Nos muestra la información de costos, ID's de cada VLAN en la red, que [[STP|protocolo]] STP usamos
+	- **Root ID**
+		- Nos muestra la info del "root bridge"
+	- **Bridge ID**
+		- Nos muestra la info del *switch* que estamos viendo
+	- **No muestra el "root cost total**
+	- También se ve está info en [[Spanning Tree BPDU]]
+2. **"show spanning-tree</vlan> root"**
+	- Nos deja ver info específica sobre STP en la VLAN especificada
+3. **"show spanning-tree detail"**
+	- Mucho mas detallado
+4. **"show spanning-tree summary"**
+	- Estados de los puertos de cada VLAN
+	- Muestra el "root cost" total
+
+**Primero, elegimos el tipo de STP**
+1. Con **"spanning-tree mode </modo>"**
+
+**Luego podemos configurar el "root bridge" primario**
+1. **"spannin-tree vlan </VLAN_ID> root primary"**
+	- Cambia la prioridad STP del equipo a 24576
+
+**Y el secundario**
+1. **"spanning-tree vlan </VLAN_ID> root secondary"**
+	- Cambia la prioridad STP a 28672
+
+**También podemos configurar la prioridad STP de forma manual**
+1. Con **"spanning-tree vlan </VLAN_ID> priority </prioridad>"**
+
+**Configuraciones que podemos realizar sobre interfaces**
+1. **"spanning-tree vlan </VLAN_ID> cost  </valor>"**
+	- Nos permite cambiar el **"root cost"** de la interfaz
+2. **"spanning-tree vlan </VLAN_ID> port-priority </valor>"**
+	1. Nos permite configurar el **"port ID de la interfaz"**

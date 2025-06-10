@@ -14,7 +14,7 @@ Tipos de mensajes:
 Pasos al enviar el NS
 1. PC1 hace *ping* a PC2 con dirección 2001:db8:78:9abc
 2. Como no tenemos la MAC, PC1 envía un mensaje **NS**
-3. Se crea un paquete (NS) con dirección origen con IPv6 de PC y de dirección se destino se usa la  dirección "solicited-node multicast" de PC2
+3. Se crea un paquete (NS) con dirección origen con IPv6 de PC y de dirección de destino se usa la  dirección "solicited-node multicast" de PC2
 	1. ¿Cómo PC1 sabe esa dirección?
 		1. A partir de la dirección *unicast* que nosotros ingresamos, PC1 automáticamente podrá calcularla
 4. De dirección MAC, se usará la MAC de PC1 para origen y para destino se usará una dirección MAC *multicast* basada en la "solicited-node" de PC2 

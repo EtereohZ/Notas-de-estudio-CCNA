@@ -1,4 +1,4 @@
-Domain Name System is used to resolve human-readable names (google.com) to [[IPv4 Addressing|IP]] addresses. The DNS servers a device uses can be manually configured or learned through [[DHCP]].
+Domain Name System (DNS) is used to resolve human-readable names (google.com) to [[IPv4 Addressing|IP]] addresses. The DNS servers a device uses can be manually configured or learned through [[DHCP]].
 
 DNS usa tanto [[TCP]] como [[UDP]], a través del puerto 53. TCP se usará cuando los mensajes DNS sean mayor a 512 *bytes*.
 
@@ -35,7 +35,8 @@ El "CNAME" es un nombre canónico que *mapea* un nombre a otro nombre.
 
 ## Configuración de un domain name
 
-Definen un área de control admistrativo en internet
+Definen un área de control administrativo en internet
 
 1. Usamos el comando **"ip domain name </nombre.x>"**
 	1. Automáticamente agregará este nombre de dominio a cualquier *hostname* que no tenga un dominio especifico
+		1. Por ejemplo, **"ping PC1"** se convertirá en **"ping PC1.dominio.com"**

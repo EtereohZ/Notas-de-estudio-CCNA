@@ -2,14 +2,18 @@
 
 
 ## Elección de ruta
+
 Si existen multiples rutas a un destino, el *router* determina que ruta es superior y la agrega a su *routing table*. Usa la métrica de la ruta para decidir cual es superior (menor métrica == superior)
 Similar a cuando un *[[Switch|switch]]* elige el mejor camino al *root bridge*, los [[Networking Protocols|protocolos]] de *routeo* dinámico usan un modelo similar para elegir el mejor camino hacia su destino.
 
 ## Tipos de protocolos 
 
-Podemos dividirlos en 2 categorías:
+Podemos dividirlos en 2 grandes categorías:
+- **IGP**
+- **EGP**
 
 ### IGP
+
 Interior Gateway Protocol
 Se usan para compartir rutas dentro de un "autonomous system" (AS), el cual es solo una organización.
 Podemos subdividirlos según el algoritmo que usan.
@@ -26,7 +30,7 @@ Open Shortest Path First
 ##### IS-IS
 Intermediate System to Intermediate System
 
-#### Algoritmo Distance Vector
+### Algoritmo Distance Vector
 
 Fueron inventados primero que los "Link State".
 Funcionan enviando lo siguiente a sus vecinos directos:

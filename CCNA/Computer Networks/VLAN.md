@@ -8,25 +8,26 @@
 - Si la fuente y destino pertenecen al mismo VLAN, los *[[Ethernet Frame|frames]]* no necesitan ser enviados al *router*
 ***
 
-##### VLAN Ranges
+## VLAN Ranges
 - VLAN normales
 	- Rango de 1-1005
 	- VLAN extendidas
 		- 1006-4094
 
-¿Qué es un access port?
+## Access Port
+
 Es un *switchport* que pertenece a una sola VLAN y conecta a *endhosts*, como un PC
 
-### Trunk Port
+## Trunk Port
 
 ¿Qué es un *trunk port*?
 Un *trunk port* lleva trafico de varias VLAN's en una sola interface, al contrario de *access ports*
 
-#### ¿Qué pasa si tenemos un switch en access y el otro en trunk?
+### ¿Qué pasa si tenemos un switch en access y el otro en trunk?
 
 Habrá un error y no podrán comunicarse
 ##### ¿Cómo sabe un *switch* a que VLAN pertenece un *frame*?
-Con VLAN *tagging*, *switches* van a ponerle un *tag* a todos los *frames* que se envíen por un *trunk link*.
+Con VLAN *tagging*, *switches* le ponen un *tag* a todos los *frames* que se envíen por un *trunk link*.
 *Access ports* no necesitan un *tag* porque la interface pertenece a solo un VLAN.
 
 ##### ¿Configuración de un *trunk port?
@@ -41,7 +42,8 @@ Para propósitos de seguridad, es buena idea cambiar la *native* VLAN a una VLAN
 Para esto usaremos el comando "switchport trunk native vlan </numero_vlan>".
 
 Por último, debemos configurar ROAS. Ver al final.
-##### VLAN Tagging
+## VLAN Tagging
+
 Existen 2 protocolos para hacer *tag*
 Se usa para identificar a que VLAN pertenece el *frame*
 - **ISL**
@@ -85,10 +87,9 @@ Se usa para identificar a que VLAN pertenece el *frame*
 - Es muy importante que la *native* VLAN calce entre *switches*
 - EL numero de *native* VLAN debe calzar con el numero de VLAN. Si queremos que VLAN 10 envíe *frames* sin *tag*, la *native* VLAN debe ser 10
 - Si no estamos usando *native vlan* es mejor asignarla a una VLAN que no estemos usando
-##### Cómo configurar native VLAN en ROAS
-1. Usar el comando "encapsulation dot1q </vlan_id> native" en la subinterfaz del  *router*
-	1. Esto le dice al *router* que esa subinterfaz pertenece a la VLAN nativa
-	2. Asumirá que *frames* que no tengan *tag* pertenecen a la VLAN nativa y que frames que se envíen a la VLAN nativa no serán *tageados*
+
+
+
 2. Configurar la dirección [[IPv4 Addressing|IP]] para la VLAN nativa en la interfaz física del *router*, sin tener que usar el comando del método previo
 	1. En este método no usamos subinterfaces para la VLAN nativa, usamos una interfaz física
 	2. Al mostrar las interfaces, veremos que la nativa está usando la interfaz física, y las otras VLAN's usarán las subinterfaces
@@ -120,6 +121,15 @@ Se usa para identificar a que VLAN pertenece el *frame*
 **Para revisar y cambiar nombres de nuestras VLAN's**
 1. **"show vlan brief"** nos muestra los puertos *access*
 2. **"show interfaces trunk"** nos muestra los puertos *trunk*
+	1. Recordar que "show vlan brief" no muestra los *trunk ports*
+	2. **Mode**
+		- **on** nos dice que fue configurado manualmente
+	3. **Encapsulation**
+		- Tipo de encapsulación
+	4. **Status**
+		- Que está *trunkeando*
+	5. **VLAN's allowed and active in management domain**
+		- Nos da las VLAN's que tenemos configuradas
 3. Entramos al modo de configuración de una VLAN con **"vlan </numero_vlan>"**
 	1. También sirve para crear una VLAN directamente
 	2. Ingresamos el comando **"name </nombre>"** para cambiar nombre de VLAN
@@ -129,6 +139,7 @@ RECORDAR QUE DEBEN EXISTIR TODAS LAS VLANS EN TODOS LOS *SWITCHES*. DEBEN CREARS
 ***
 
 ### Router on a Stick
+
 Es el nombre usado para *inter VLAN routing*, solo tendremos una interfaz física conectando el [[Router|router]] y el [[Switch|switch]].
 Es usado para *routear* entre multiples VLANS usando solo 1 interfaz entre el *router* y el *switch*.
 Se convertirán en subinterfaces de una interfaz, Ej.  g0/0 se dividirá en g0/0.10, g0/0.20, g0/0.30. Y pueden operar como 3 interfaces separadas. Usar los mismos número que tengan las VLAN's
@@ -144,3 +155,8 @@ Se convertirán en subinterfaces de una interfaz, Ej.  g0/0 se dividirá en g0/0
 	1. Cualquier *frame* que llegue con el id de la VLAN configurada será tratado por el *router* como si hubiese llegado por esta subinterfaz
 	2. También *tageará* todos los *frames* que tengan como destino a esa VLAN con el id de la VLAN
 2. Repetir para cada subinterfaz
+
+**Para configurar VLAN nativa en la subinterfaz
+1. **encapsulation dot1q </vlan_id> native**
+	1. Configuramos esa subinterfaz como VLAN nativa
+	2. Asumirá que *frames* que no tengan *tag* pertenecen a la VLAN nativa y que frames que se envíen a la VLAN nativa no serán *tageados*

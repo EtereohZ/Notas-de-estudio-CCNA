@@ -16,7 +16,7 @@ Revisar [[Dynamic Routing|generalidades del *routeo* dinámico]]
 		- Publicada en 1998
 		- Usada para [[IPv4 Addressing|IPv4]]
 	- OSPFv3
-		- Usada para [[IPv6]]
+		- Usada para [[IPv6 Addressing|IPv6]]
 
 
 ## Como compartir LSA's y determinar mejor ruta
@@ -196,25 +196,40 @@ Además de cambiar la métrica con el comando de arriba, podemos cambiar especí
 
 ## Configuración OSPF
 
-1. Ingresamos el comando "router ospf </ID>"
+**Antes de entrar a configurar, revisamos comandos informativos**
+1. "show ip protocols"
+2. **show ip ospf neighbor**
+3. show ip ospf interface </opcion>
+		1. Tiene varias opciones, como "brief"
+
+**Primero, entramos al modo de configuración de OSPF**
+1. Con el comando **"router ospf </ID>"**
 	1. **No es necesario que los ID's sean iguales** entre distintos *routers* para convertirse en vecinos, al contrario de [[EIGRP]].
 	2. No tiene relación con la configuración de áreas
-2. Ingresamos el comando "network </red> </wildcard> area </area>"
+	3. Pueden haber variso ID's distintos en un mismo *router*
+
+**Ahora configuramos las redes que queremos agregar a OSPF**
+1. Usando **"network </red> </wildcard> area </area>"**
 	1. Este comando le dice al *router* que busque interfaces en el rango de IP especificado
 		1. Y activar OSPF en la interfaces que calcen, y en el área especificada
-		2. El *router* tratará de buscar vecinos OSPF en *routers* con OSPF activado
+		2. El *router*, entonces, tratará de buscar vecinos OSPF en *routers* con OSPF activado
 	2. Se debe especificar el área
-3. Usamos el comando "passive-interface </interface>"
+
+**Si tenemos una red donde no habrán vecinos OSPF**
+1. Y ahora el comando "passive-interface </interface>"
 	1. Le dice al *router* que no envíe mensajes OSPF "hello" fuera de esa interfaz
 	2. Usado si no hay *routers* a los que anunciar fuera de esa interfaz (no tiene vecinos)
-4. Ingresamos el comando "default-information originate" si queremos anunciar una *default gateway*
-5. Configurar métricas cambiando RBw o directamente el costo de una interfaz, si se require
-6. Podemos usar el comando "distance </numero>" para cambiar la AD
-7. Revisamos info con comandos
-	1. "show ip protocols"
-	2. **show ip ospf neighbor**
-	3. show ip ospf interface </opcion>
-		1. Tiene varias opciones, como "brief"
+
+**Ahora configuramos una "default gateway" para OSPF**
+1. Configuramos una "default route" en el *router*
+2. Ingresamos el comando "default-information originate"
+	1. Le dice al ¨router que se anuncie a la red OSPF como el "default gateway"
+
+						
+3. Configurar métricas cambiando RBw o directamente el costo de una interfaz, si se require
+4. Podemos usar el comando "distance </numero>" para cambiar la AD
+5. Revisamos info con comandos
+
 
 #### Método alternativo de activación de OSPF en una interfaz
 
@@ -237,30 +252,3 @@ Orden de prioridad al determinar el *router* ID OSPF
 	1. Para que tome efecto el cambio de ID
 	2. El *router* perderá todas sus rutas OSPF
 	3. No recomendado usar en una red real
-
-
-## Info en IP protocols
-1. "Routing protocol is </protocolos>"
-	1. Nos va a mostrar OSPF y el "process ID" que configuramos al inicio
-2. Router ID
-	1. Nos muestra el ID
-3. "Autonomous system boundary router"
-	1. También llamado ASBR, es un *router* OSPF que conecta la red OSPF a una red externa
-		1. Por ejemplo, al usar el comando "default-information originate" el *router* se convierte en el ASBR
-4. "Number of areas in this router is" (no necesario para CCNA)
-	1. normal
-	2. stub
-	3. nssa
-5. "Maximum path:"
-	1. OSPF acepta *load-balancing* usando ECMP en determinados *paths*
-	2. Se puede cambiar usando el comando "maximum-paths </numero>"
-6. "routing for networks"
-	1. Nos muestra los comandos "network" que usamos
-	2. Nos muestra las interfaces en las que OSPF está activo
-7. "Passive interface"
-	1. Nos muestra las interfaces pasivas que configuramos
-8. "Routing information sources:"
-	1. Nos muestra los vecinos del *router*, su ID, distancia y última actualización
-9. "Distance:"
-	1. Nos muestra la [[Dynamic Routing|AD]] de OSPF
-	2. Se puede cambiar con el comando "distance </numero>"

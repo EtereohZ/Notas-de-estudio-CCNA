@@ -4,7 +4,7 @@ Nos provee redundancia en cuanto al *default gateway* para *hosts* en una *subne
 Todos los [[Router|routers]], por defecto, poseen la misma prioridad. Se deben configurar para cambiarla.
 
 - En este protocolo se elige un *router* activo y uno *standby*
-- Posee 2 versiones, versión 2 soporta [[IPv6]]
+- Posee 2 versiones, versión 2 soporta [[IPv6 Addressing|IPv6]]
 - V1 envía multicast a 224.0.0.2 y V2 a 224.0.0.102
 - MAC virtual
 	- V1 de 0000.0c07.acXX (XX=HSRTP group number)

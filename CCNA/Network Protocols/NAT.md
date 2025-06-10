@@ -17,6 +17,12 @@ En "Static NAT" no usamos la IP pública que se encuentra en la interfaz del *ro
 
 ### Configuración
 
+**Antes de configurar, revisamos comando informativo**
+1. Con **"show ip nat statistics"**
+	1. Nos muestra las estadísticas de NAT
+	2. total active translations: Nos muestra las traducciones estáticas, dinámicas y "extended"
+	3. Peak translations: el número máximo de traducciones que han habido en un determinado momento
+
 **Lo primero que debemos hacer es configurar las interfaces del *router***
 1. Elegimos la interfaz que configuraremos como "interna"
 	1. Ingresamos el comando **"ip nat inside"** para definir la interfaz como "interna"
@@ -41,15 +47,6 @@ En "Static NAT" no usamos la IP pública que se encuentra en la interfaz del *ro
 
 Podemos elegir borrar las traducciones dinámicas de la tabla, con:
 - **"clear ip nat translation * "**
-
-
-### "show ip nat statistics"
-
-Nos muestra las estadísticas de NAT
-
-1. total active translations: Nos muestra las traducciones estáticas, dinámicas y "extended"
-2. Peak translations: el número máximo de traducciones que han habido en un determinado momento
-3. Proximamente
 ****
 
 ## Dynamic NAT

@@ -28,7 +28,7 @@ Sí un *frame* tiene un *payload* de menor de **46 bytes**, se le agrega un ***p
 - **Type**
 	- Indica el protocolo L3 que se encuentra encapsulado en el *frame*
 		- **[[IPv4 Addressing|IPv4]]** = 0X0800 == 34525 en decimal
-		- **[[IPv6]]** = 0X86DD == 2048 en decimal
+		- **[[IPv6 Addressing|IPv6]]** = 0X86DD == 2048 en decimal
 		- **[[ARP]]** = 0x0806
 	- Si es valor es de >=1536 indica el **tipo** de paquete encapsulado
 	- **2 Bytes** de largo == 16 bits

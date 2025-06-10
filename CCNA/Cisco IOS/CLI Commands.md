@@ -21,7 +21,6 @@
 - **no**: cancela o elimina un comando ingresado
 	- Ej. "no service password-encryption" hará que las próximas contraseñas no estén hasheadas
 		- No funciona para las que ya existen
-- **ping**: Referir a [[Ping]]
 -
 - **show ip interface brief**: Comando utilizado para confirmar los estados de las interfaces y las direcciones IP de algún equipo
 	- **Interface**: Listado de las interfaces en el equipo
@@ -56,37 +55,7 @@
 - **speed </velocidad>**: Nos permite elegir una velocidad especifica o automático
 - **duplex**: Nos permite determinar que tipo de duplex queremos
 
-- **show ip route:**
-	- Nos muestra la *routing table* del [[router]]
-	- **Codes**: Nos muestra los distintos protocolos que el router puede usar para aprender rutas
-		- **L**: Código para *local*, es la ruta para la [[IPv4 Addressing|dirección IP]] configurada en al interfaz (tienen una netmask /32)
-		- **C**: Código para *connected*, son las rutas a la red en la que la interfaz del router está conectada(con la netmask que se configuró en la interface)
-		- **S**: Muestra rutas estáticas
-			- [1/0] son la *administrative distance* y *metric* del la ruta
-		- S*: Nos india que es una *static route*    
-- **ip route </ip_address> </netmask> </next_hop>**:
-	- Lo usamos para determinar la IP destino, su netmask, y el IP del siguiente router en el camino
-- **ip route </ip_address> </netmask> </exit_interface>:**
-	- Especifica por cual interfaz el *router* debería mandar sus paquetes, en vez de indicar el IP del siguiente router
-	- Si configuramos con este comando,  **show ip route** mostrará la ruta como *connected*
-- **ip route </ip_address> </netmask> </exit_interface> </next_hop>:
-	- Podemos especificar tanto la interfaz como el siguiente salto
-- **show interfaces trunk**
-	- Nos muestra las *trunk interfaces*
-	- Recordar que "show vlan brief" no muestra los *trunk ports*
-	- **Mode**
-		- **on** nos dice que fue configurado manualmente
-	- **Encapsulation**
-		- Tipo de encapsulación
-	- **Status**
-		- Que está trunkeando
-	- **VLAN's allowed and active in management domain**
-		- Nos da las VLAN's que tenemos configuradas
-	- **VLAN's spanning tree forwarding state and not pruned**
-		- Clase futura
-- **encapsulation dot1q </vlan_id> native**
-	- Configuramos esa subinterfaz como VLAN nativa
-	- Ver en [[VLAN]]
+
 - **default interface </interfaz>**
 	- Devuelve las configuraciones al *default* de la interfaz seleccionada
 - **interface </numero_de_vlan>**
@@ -112,39 +81,8 @@
 - **vtp domain </nombre_dominio>**
 	- Elegimos o cambiamos el nombre del dominio [[VTP]]
 
-- **show spanning-tree**
-	- Nos muestra la información de costos, ID's de cada VLAN en la red, que [[STP|protocolo]] usamos
-	- **Root ID**
-		- Nos muestra la info del "root bridge"
-	- **Bridge ID**
-		- Nos muestra la info del *switch* que estamos viendo
-	- **No muestra el "root cost total**
-	- También se ve está info en [[Spanning Tree BPDU]]
-- **show spanning*</vlan> root*
-	- Nos deja elegir una VLAN para solo mostrar su info
-- **show spanning-tree detail**
-	- Mucho mas detallado
-- **show spanning tree summary**
-	- Estados de los puertos de cada VLAN
-	- Muestra el "root cost" total
-- **spanning-tree bpduguard enable**
-	- Activamos "BPDU Guard" para proteger las interfaces, de formar bucles
-- **spanning-tree portfast bpduguard enable**
-	- Activamos "BPDU Guard" en todas las interfaces que tengan "portfast" habilitado
-- **spanning-tree mode </modo>**
-	- Elegimos el modo SPT que queremos
-	- **PVST**
-	- **rapid-pvst**
-- **spannin-tree vlan </VLAN_ID> root primary**
-	- Nos permite configurar manualmente que *switch* será el "root bridge"
-- **spannin-tree vlan </VLAN_ID> root secondary**
-	- Nos permite configurar un segundo "root bridge"
-	- Cambia la prioridad STP del equipo a 28672
-- **spanning-tree vlan </VLAN_ID> port-priority </prioridad>**
-	- Nos permite elegir manualmente la prioridad [[STP]] que queremos para el *switch*
-	- Primero debemos elegir interfaz
-- **spanning-tree link-type </tipo>**
-	- Elegimos el tipo de "link type" que queremos en [[RSTP]]
+
+
 
 - Para comandos detallados de *[[Dynamic Routing|dynamic routing protocols]]* ver las paginas de cada uno:
 	- [[OSPF]]

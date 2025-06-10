@@ -9,6 +9,7 @@ Pertenece a los protocolos de [[dynamic routing]]
 		- Más tráfico se enviará en *paths* con una métrica menor, ya que son más rápidos
 
 ## Metric
+
 - By default, EIGRP usa ***bandwidth*** y ***delay*** para calcular la métrica
 - Valores por defecto son:
 	- K1 = 1

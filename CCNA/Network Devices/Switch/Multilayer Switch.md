@@ -2,7 +2,7 @@
 - You can create virtual interfaces for each [[VLAN]], and assign IP addresses to those interfaces.
 - It can be used for inter-VLAN routing
 
-#### Switch Virtual Interfaces
+## Switch Virtual Interfaces
 
 -  Llamados **SVI's**, son las interfaces virtuales en las que son asignadas las direcciones IP en un *multilayer switch*. Le asignamos las direcciones IP de cada red de cada VLAN; igual como lo haríamos en un *router*.
 	- El *multilayer switch* tendrá su propia *routing table*, si le llega un *frame* destinado a VLAN 10, sabrá por que interfaz enviarlo.
@@ -12,26 +12,48 @@
 	- Tendremos que asignar una [[CCNA/Subnetting/Subnetting|subnet]] a nuestro *point-to-point* entre el *multilayer switch* y el *router*
 	- Luego le configuramos una [[Routing|default route]] al *switch* con destino al *router*
 
-##### Configuración MS para routear
-1. Esta parte debe realizarse primero que la configuración de SVI que está mas abajo
-2. Eliminamos las subinterfaces del [[Router|router]] que usamos para las VLAN
-3. Usamos el comando "default interface </interfaz>" para devolver la configuración estándar
-4. Elegimos la interface que conectará *point-to-point* con el MS y le configuramos su dirección IP
-5. En el MS, ingresamos el comando "ip routing"
-	1. Habilita *routing* L3
-6. Ingresar el comando "no switchport", cambia la interfaz desde un *switchport* L2 a un L3 *routed port*
-	1. Acordarse de elegir la interfaz primero
-	2. Nos permite asignarle IP a la interfaz
-7. Le asignamos el IP a la interfaz
-8. Asignar la *default route* al *multilayer switch* con el comando "ip route 0.0.0.0 0.0.0.0 </ip_router>"
-9. Usar comando "show interfaces status" para ver las interfaces
-##### Configurar SVI para inter-VLAN routing
-1.  Ingresar comando "interface </numero_de_vlan>"
-	1. Esto creará una SVI para esa VLAN
-	2. La VLAN debe crearse por separado
-2. Le asignamos [[IPv4 Addressing|dirección IP]] a la SVI
-3. Usamos "no shutdown" para prenderla, están *shutdown* por *default*
-4. Si queremos que la SVI esté up/up:
-	1. La VLAN debe existir
-	2. el *switch * debe tener algún *access port* que esté up/up o algún *trunk port* que permita a la VLAN que esté up/up
-	3. LA VLAN debe estar prendida
+## Configuración MS para routear
+
+1. Esta parte debe realizarse primero que la configuración para *routeo* inter-VLAN
+
+**Primero, eliminamos las subinterfaces en el *router* (si existiesen) y reiniciamos la interfaz
+1. Con **"no interface </interfaz>"**
+2. Y "default interface </interfaz>" 
+	1. Devolvemos la configuración estándar
+
+**Le asignamos una dirección IP a la interfaz que conectará con el MS**
+
+**Ahora habilitamos la capacidad del *switch* para routear***
+1. Con el comando **"ip routing"**
+	1. Habilita *routeo* L3
+	2. Permite al *switch* crear una tabla de *routeo*
+
+**Seguido, entramos a, y configuramos, la interfaz que conectará con el router para poder asignarle un IP**
+1. Con **"no switchport"**
+	1. cambia la interfaz desde un *switchport* L2 a un L3 *routed port*
+
+**Finalmente, le configuramos la *default route* al *MS***
+1. Con el comando **"ip route 0.0.0.0 0.0.0.0 </ip_router>"**
+
+**Si queremos ver la nueva interfaz del *switch***
+1. Usar comando **"show interfaces status"**
+
+### Configurar SVI para inter-VLAN routing
+
+**Primero, creamos la SVI que será usada para *routear* VLAN's**
+1.  Ingresar comando **"interface </numero_de_vlan>"**
+	1. Ejemplo: **"interface vlan10"**
+	2. Esto creará una SVI para esa VLAN
+	3. La VLAN debe crearse por separado
+
+**Ahora le asignamos una IP a esa SVI, como cualquier otra interfaz**
+1. Con **"ip address </ip_address> </netmask>"**
+
+**Prendemos la interfaz**
+1. Usamos **"no shutdown"** 
+	1. Están *shutdown* por *default*
+
+**Si queremos que la SVI esté up/up**
+1. La VLAN debe existir en el *switch*
+2. el *switch* debe tener algún *access port* que esté up/up o algún *trunk port* que permita a la VLAN que esté up/up
+3. LA VLAN debe estar prendida

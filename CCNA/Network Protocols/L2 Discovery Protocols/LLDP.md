@@ -7,10 +7,21 @@ No puede compartir información VTP
 
 ## Configuración
 
-1. Se habilita o deshabilita con **"[no] lldp run"**
-2. Para habilitar la transmisión de mensajes LLDP **"lldp transmit"**  en una interfaz
-3. Para habilitar el poder recibir mensajes LLDP usamos **"lldp receive"** en una interfaz
-4. Para cambiar el *timer* de los mensajes usamos **"lldp timer </segundos>"**
-5. Para cambiar el *holdtime* usamos **"lldp holdtime </segundos>"**
-6. Con **"show lldp"** vemos configuración e info
+**Antes de configurar, revisamos comando informativo**
+1. Con **"show lldp"** vemos configuración e info
 	1. tiene varias opciones, muy parecido a [[CDP]]
+
+**Si queremos activar de forma global en el equipo**
+1. Usamos el comando **"[no] lldp run"**
+
+**Si queremos activar LLDP en interfaces especificas**
+1. Usamos **"lldp transmit"** en una interfaz
+	1. Para habilitar la transmisión de mensajes LLDP
+2. Usamos **"lldp receive"** en una interfaz
+	1. Para habilitar el poder recibir mensajes LLDP
+
+**Si queremos cambiar el timer de los mensajes**
+1. Usamos **"lldp timer </segundos>"**
+
+**Si queremos cambiar el *holdtime***
+1. Usamos **"lldp holdtime </segundos>"**

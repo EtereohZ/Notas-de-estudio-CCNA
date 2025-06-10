@@ -11,7 +11,7 @@
 3. Asignamos la VLAN a al *access* con **"switchport access vlan </numero_vlan>"**
 4. Habilitamos portfast **"spanning-tree portfast"**
 
-**Configuramos el [[EtherChannel]] entre el WLC y el [[Switch1switch]]**
+**Configuramos el [[EtherChannel]] entre el WLC y el *[[Switch|switch]]***
 1. Con **"interface </rango>"**
 2. Y **"channel-group </grupo> mode </modo>"**
 	1. WLC's solo soportan el modo estático

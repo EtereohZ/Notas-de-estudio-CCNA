@@ -4,7 +4,7 @@ Are a specialty network security devices that monitor and control network traffi
 - Firewalls modernos pueden ser [[NGFW|NGFW's]] e incluir [[IPS|IPS']]. Estos incluyen capacidades avanzadas de filtración y monitoreo de redes.
 - Pueden ser software/Host-based Firewall o hardware
 
-### Network Firewalls
+## Network Firewalls
 These are hardware devices that filter traffic between networks.
 
 Algunos modelos, ambos NGFW:

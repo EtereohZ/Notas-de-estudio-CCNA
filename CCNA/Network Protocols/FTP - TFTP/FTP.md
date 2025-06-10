@@ -45,5 +45,5 @@ Recordemos que podemos ver la version con **"show version"**
 ## Upgrading Cisco IOS (FPT)
 
 1. Configuramos usuario con **"ip fpt username </usuario>"**
-2. Configuramos contraseña con **"ip fpt  password </contraseña>"**
+2. Configuramos contraseña con **"ip fpt password </clave>"**
 3. Mismos pasos que con TFPT

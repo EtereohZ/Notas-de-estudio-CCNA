@@ -5,7 +5,7 @@ La información se va procesando desde la Application layer hasta la Physical la
 Luego se envía al otro sistema y este realiza el proceso opuesto, se van removiendo las capas extra hasta que la información llega a la Application layer. Esto es desencapsulación.
 
 
-## OSI layers:
+### OSI layers:
 - **Layer 7. Application layer**:
 	- Es el nivel más cercano al usuario
 	- Interactúa con las aplicaciones de software como el browser
@@ -61,11 +61,11 @@ Luego se envía al otro sistema y este realiza el proceso opuesto, se van removi
 		- [[STP]]
 - **Layer 1. Physical layer**
 	- Define las características del medio usado para transferir info entre equipos
-		- Por ejemplo, niveles de voltaje,  [[Connector|conectores físicos]], especificaciones de cables, pines, distancias máximas de transmisión, 
+		- Por ejemplo, niveles de voltage,  [[Connector|conectores físicos]], especificaciones de cables, pines, distancias máximas de transmisión, 
 	- bits son convertidos en señales eléctricas o radio
 	- Cubre los estándares de [[Ethernet]] de los [[cables]]
 
 La info, los segmentos, paquetes y frames, todos son partes de PDU o Protocol Data Unit
 Un segmento sería un L4 PDU, un paquete seria un L3 PDU y un frame sería un L2 PDU, un bit sería un L1 PDU
 
-![[osi_model_7_layers.png]]
+![](file:///C:%5CUsers%5Cwasa_%5CDocuments%5CObsidian%20Vault%5CImages%5Cosi_model_7_layers.png)

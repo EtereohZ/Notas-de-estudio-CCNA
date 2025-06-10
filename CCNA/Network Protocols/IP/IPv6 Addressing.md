@@ -51,10 +51,10 @@ Luego de asignar IP, si revisamos "show ipv6 interface brief", nos podemos dar c
 ### Configuración de IPv6 con EUI-64
 
 Es un método para convertir direcciones [[MAC Address|MAC]] (48 *bits*) a un identificador de interfaz de 64 *bits*.
-Este identificador puede usarse para volverse la porción del *host* de una dirección IPv6 /64.
+Este identificador puede usarse para volver la porción del *host* de una dirección IPv6 /64.
 
 1. Elegimos interfaz
-2. Ingresamos el comando "ipv6 address </red></prefijo> eui-64"
+2. Ingresamos el comando **"ipv6 address </red></prefijo> eui-64"**
 
 
 ### Configuración de IPv6 con SLAAC
@@ -65,7 +65,7 @@ Es otra manera de configurar direcciones IPv6's.
 *Hosts* usan los mensajes RS/RA para aprender el prefijo IPv6 del *local link* (ej. 2001:db8::/64)  y así automáticamente generar una dirección IPv6, a diferencia de **EUI-64**.
 Luego de aprender el prefijo, usará **EUI-64** para generar la dirección IPv6.
 
-Se puede configurar con el comando "ipv6 address autoconfig"
+Se puede configurar con el comando **"ipv6 address autoconfig"**
 
 
 ## Tipos de direcciones Ipv6
@@ -124,7 +124,7 @@ Scopes:
 - **Organisation-local** (FF08): Más amplias que **"site-local"**
 - **Global** (FF0E): Sin límites
 
-Imagen representativa de los *scopes:
+Imagen representativa de los *scopes*:
 ![[IPv6_scopes.png]]
 
 
@@ -132,11 +132,11 @@ Imagen representativa de los *scopes:
 ### Anycast
 
 Nuevo en IPv6, funciona como "one-to-one-of-many".
-Se refiere a que hay varios posibles destinos, pero el tráfico sólo e envía a 1. 
+Se refiere a que hay varios posibles destinos, pero el tráfico sólo se envía a 1. 
 
 En "anycast", varios *routers* están configurados con la **misma dirección IPv6** y anuncian esa dirección mediante protocolos de *routeo*. Cuando un *host* envía un paquete a esa dirección, los *routers* lo *forwardearán* **al *router* más cercano con esa IP**, basándose en métricas.
 
-No hay rango de direcciones especificas para "anycast".
+No hay rango de direcciones específicas para "anycast".
 
 - Podemos configurar una dirección "anycast" con el comando "ipv6 address </direccion_ipv6></prefijo> anycast"
 - La podemos revisar con "show ipv6 interface </interfaz>"

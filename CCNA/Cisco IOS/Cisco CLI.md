@@ -14,17 +14,18 @@ Luego de entrar a la consola, nos encontramos en **"User EXEC Mode"**, que se no
 **"User EXEC Mode"** es limitado, podemos observar pero no podemos cambiar la configuración del equipo. También puede ser llamado **"user mode"**. En resumen, es un modo sin privilegios para poder realizar cambios.
 
 Podemos entrar en **"Privileged EXEC Mode"** con el comando **"enable"** en la CLI. El símbolo ">" cambiará por un "#". Ahora se verá como **Router#**.
-Este modo nos da acceso a ver todas las configuraciones, reiniciar y dispositivo, y otras cosas, pero no cambiar la configuración.
+Este modo nos da acceso a ver todas las configuraciones, reiniciar el dispositivo, y otras cosas, pero no cambiar la configuración.
 
 Si queremos configurar y entrar al **"Global Configuration Mode"**, ahora ingresamos el comando **"configure terminal"** y aparecerá un "(config)" después del *hostname*. Se verá como **Router(config)**.
 
-Con el comando "exit" Salimos de *Global Configuration Mode* y si lo ingresamos de nuevo nos deslogea.
+Con el comando "exit" salimos de *Global Configuration Mode* y si lo ingresamos de nuevo nos desloguea.
+![[CLI modes.png]]
 
 ### Resumen
 
 Recordar que no podemos entrar al modo privilegiado sin antes entrar al modo de usuario.
 
-**Modo para entrar al modo de usuario
+**Modo para entrar al modo de usuario**
 1. **"enable"**
 
 **Comando para entrar al modo privilegiado**
@@ -43,13 +44,13 @@ Ese *hash* (llamado "Type 7") se puede desencriptar muy fácilmente. **Nunca** u
 
 Otra manera más segura es usando **"enable secret </clave>"**. Este comando usará el *hash* **MD5** para asegurar nuestra contraseña. Al igual que el tipo 7, no debe usarse en entornos reales.
 
-## Archivos de configuración
+Nota: Revisar [mejores practicas de contraseñas](https://media.defense.gov/2022/Feb/17/2002940795/-1/-1/1/CSI_CISCO_PASSWORD_TYPES_BEST_PRACTICES_20220217.PDF).
 
+## Archivos de configuración
 
 **Hay 2 archivos de configuración que se encuentran en el equipo: *running-config* y *startup-config***
 - *running-config*:  Es el archivo de configuración que se encuentra activo en el equipo, todos los comandos que ingresemos a la CLI editarán este archivo.
 - *startup-config*: Es el archivo de comunicación que se carga luego de prender o reiniciar el equipo.
-
 - Podemos guardar la configuración con el comando **"write"** o **"write memory"**
 
 

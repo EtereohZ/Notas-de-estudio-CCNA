@@ -1,5 +1,6 @@
 
-#### IPv4 Header
+## IPv4 Header
+
 - **Version**: 
 	- Identifica la IPv usada
 		- IPv4 se identifica con un 4 o 0100

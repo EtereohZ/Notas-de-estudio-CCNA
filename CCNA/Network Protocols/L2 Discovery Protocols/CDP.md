@@ -7,7 +7,7 @@ Puede compartir información de VTP.
 
 
 ## Configuración
- 1. Para habilitarlo o deshabilitarlo usamos el comando **"[no] cdp run"**
+ 1. Para habilitarlo o deshabilitarlo, de manera global, usamos el comando **"[no] cdp run"**
 	 1. Podemos usarlo para habilitar/deshabilitar una interfaz en específico
  2. Podemos configurar el *timer* con **"cdp timer </segundos>"**
  3. Podemos configurar el *holdtime* con **"cdp holdtime </segundos>"**

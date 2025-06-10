@@ -95,7 +95,6 @@ La red *upstream* se llama **DS**, para "Distribution System".
 
 ## Modos operacionales AP
 
-
 Un AP puede actuar como **repetidor**, extendiendo el rango de una **BSS**. Debe operar en el mismo canal, pudiendo reducir el rendimiento.
 
 Otro modo operacional es **"Workgroup Bridge"**. Opera como cliente de una AP, y puede ser usado para conectar equipos alámbricos a la red inalámbrica.

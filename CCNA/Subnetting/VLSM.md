@@ -1,3 +1,4 @@
+
 Variable-Length Subnet Masks
 Until now, we have practiced [[CCNA/Subnetting/Subnetting|subnetting]] using FLSM (Fixed-Length Subnet Masks)
 This means that all of the subnets use the same prefix length (Ex. subnetting a class C network into 4 subnets using /26)
@@ -9,7 +10,7 @@ Pasos
 1. Asignar la subnet mas grande al inicio del espacio de la dirección
 2. Asignar la mas grande que venga
 3. Repetir hasta asignar todas
-Se tiene que mantener la continuidad
+
 ![[VLSM.png]]
 
 #### To LAN A

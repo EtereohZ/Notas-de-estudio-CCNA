@@ -1,7 +1,7 @@
-Dynamic Host Configuration [[Networking Protocols|Protocol]] is used to allow hosts to dynamically learn various aspects of their network configuration, such as [[IPv4 Addressing|IP addresses]], [[Subnet Mask]], [[Routing|Default Gateway]], [[DNS|DNS Server]], etc, without manual configuration.
+Dynamic Host Configuration [[Networking Protocols|Protocol]] (DHCP) is used to allow hosts to dynamically learn various aspects of their network configuration, such as [[IPv4 Addressing|IP addresses]], [[Subnet Mask]], [[Routing|Default Gateway]], [[DNS|DNS Server]], etc, without manual configuration.
 Equipos como *[[Router|routers]]*, servidores, etc, son manualmente configurados.
 
-En redes pequeñas, el *router* generalmente actual como el servidor DHCP para *hosts* en la [[LAN]].
+En redes pequeñas, el *router* generalmente actúa como el servidor DHCP para *hosts* en la [[LAN]].
 
 - Servidores DHCP usan UDP puerto **67**
 - Clientes DHCP usan UDP puerto **68**

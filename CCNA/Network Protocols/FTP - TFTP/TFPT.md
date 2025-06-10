@@ -12,7 +12,6 @@ No es un reemplazo de FTP, solo es otra herramienta que puede ser usada cuando s
 
 ## TFPT Reliability
 
-
 UDP no nos da confiabilidad para en cuanto a la información transmitida,  pero TFPT posee mecanismos internos para darnos integridad y confiabilidad e la información. Esto se llama "lock step".
 
 - Cada mensaje TFPT es *acknowledged*

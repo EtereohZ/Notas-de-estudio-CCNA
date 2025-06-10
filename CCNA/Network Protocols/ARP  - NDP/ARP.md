@@ -17,7 +17,7 @@ Cuando el *[[router]]* envié el paquete, necesitará la dirección MAC de el pr
 
 Todos los equipos guardarán una tabla con las direcciones **ARP** que hayan aprendido.
 
-## Comando
+## Visualización
 
 **Solo necesitamos 1 comando para visualizar la tabla**
 - Con **"show arp"**

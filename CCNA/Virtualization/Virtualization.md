@@ -1,5 +1,4 @@
 
-
 ## Tipos de Virtualización
 
 Existen 2 tipos distintos que son usados:

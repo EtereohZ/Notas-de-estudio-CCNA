@@ -1,7 +1,7 @@
 An API is a software interface that allows two applications to communicate with each other.
 They encode data in either XML or [[JSON]].
 
-En una arquitectura [[Soitware-Defined Networking]], las API's se usan para comunicar entre apps y el controlador SDN, y entre el controlador SDN y los equipos de red.
+En una arquitectura [[Software-Defined Networking]], las API's se usan para comunicar entre apps y el controlador SDN, y entre el controlador SDN y los equipos de red.
 
 
 

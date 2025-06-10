@@ -1,19 +1,16 @@
 
-- NTP nos permite sincronizar automáticamente la hora en la red.
+- Network Time Protocol (NTP) nos permite sincronizar automáticamente la hora en la red.
 - Clientes NTP solicitarán la hora a los servidores NTP
 - Un equipo puede ser cliente y servidor al mismo tiempo
 - NTP nos permite una precisión de hasta 50 milisegundos si nos estamos conectando al servidor NTP a través de internet
 - NTP usa puerto 128 UDP
 - **Stratum** es la distancia de un servidor NTP al reloj de referencia
 
-
 ## Reference Clock
 
 Son relojes muy precisos, son la fuente de la hora. Se consideran con un ***stratum*** de 0. Los servidores NTP que están conectados a ellos son ***stratum*** 1. Cada 1 salto en la jerarquía le agrega 1 al *stratum*.
 
 Los equipos también pueden entrar en un estado "symmetric active mode", donde formarán relaciones con equipos en el mismo *stratum* para proveer una hora mas precisa. también, un cliente puede sacar su hora de mas de 1 servidor.
-
-
 
 
 ## Configuración
@@ -33,7 +30,6 @@ Esto se puede usar en caso de que no tengamos conexión a internet y queramos co
 
 1. Usamos el comando "ntp master {stratum_number}"
 	1. Si no ingresamos número, el *stratum* por defecto será 8  
-
 
 
 ### Configuración Symmetric Active Mode

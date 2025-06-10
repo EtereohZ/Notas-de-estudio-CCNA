@@ -1,7 +1,6 @@
  
 ## Manual Time Configuration
 
-
 1. Usamos el comando "clock set </hh:mm:ss> </dia> </mes> </año>"
 	1. Se hace fuera de *config mode*
 2. Con **"show clock detail"** vemos info sobre la fecha y quien la configuró

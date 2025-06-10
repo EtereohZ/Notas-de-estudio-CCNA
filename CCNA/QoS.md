@@ -1,5 +1,5 @@
 Las redes modernas  son redes convergidas de [[IP Phones|teléfonos IP]], video, tráfico regular, etc.
-Todos estos distintos tipos de tráfico deben competir por la *bandwidth* disponible, ahí es donde entra QoS.
+Todos estos distintos tipos de tráfico deben competir por la *bandwidth* disponible, ahí es donde entra **"Quality of Service"** (QoS).
 
 QoS es un grupo de herramientas usadas por los equipos de la red para aplicar distintos tratos a distintos paquetes. Maneja las siguientes características:
 1.  **Bandwidth**

@@ -7,7 +7,7 @@ Los switches no pueden conectarse directamente al internet u otras LAN's, necesi
 Generalmente tienen >24 interfaces o puertos para que los dispositivos se puedan conectar.
 Las interfaces vienen activadas por defecto, en equipos Cisco.
 
-#### Speed/Duplex Autonegotiation
+## Speed/Duplex Autonegotiation
 
 Interfaces that can run at different speeds (10/100 or 10/100/1000) have default settings of *speed auto* and *duplex auto*
 Interfaces "advertise" their capabilities to the neighboring device, and they negotiate the best speed and duplex settings they are both capable of.
@@ -17,7 +17,7 @@ Interfaces "advertise" their capabilities to the neighboring device, and they ne
 **[[Full - Half Duplex|Duplex]]**: Si la velocidad es de 10 o 100 Mbps, el *switch* usará *half duplex*. Si es 1000mbps, usará *full duplex*.
 Si un equipo tiene configurado manualmente *Full Duplex* y el switch tiene auto negociación activado, el switch no podrá negociar con ese equipo y activará *Half Duplex*, esa diferencia se llama ***Duplex mismatch*** y ocurrirán colisiones. 
 
-#### Interface Errors
+## Interface Errors
 
 - **runts**:  *Frames* que son mas pequeñas que el tamaño mínimo de un *frame* (64 bytes)
 - **giants**: *Frames* que son mas grandes que el tamaño mínimo de un *frame* (1518 bytes)

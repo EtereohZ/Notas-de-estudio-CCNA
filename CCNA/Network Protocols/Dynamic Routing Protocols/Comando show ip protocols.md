@@ -2,6 +2,7 @@ Nota: No todos los campos aparecerán en cada protocolo
 
 1. Routing Protocol is "</protocolo_elegido>"
 	1. Es el protocolo que nosotros determinamos
+	2. Si es OSPF, nos muestra el "process ID que configuramos"
 2. Sección de timers:
 	1. Sending updates every </tiempo>
 	2. Next due in </tiempo>
@@ -21,16 +22,24 @@ Nota: No todos los campos aparecerán en cada protocolo
 	3. finalmente, se elegirá la dirección IP más alta de una de las interfaces físicas
 	4. Se puede configurar con el comando "eigrp router-id </numero>"
 	5. Parece una dirección IP, pero no lo es
-7. Automatic network summarization 
+7. "Autonomous system boundary router"
+	1. También llamado ASBR, es un *router* OSPF que conecta la red OSPF a una red externa
+		1. Por ejemplo, al usar el comando "default-information originate" el *router* se convierte en el ASBR
+8. Automatic network summarization 
 	1. Nos dice si la estamos usando o no
-8. Maximum path: </numero>
+9. "Number of areas in this router is" (no necesario para CCNA)
+	1. normal
+	2. stub
+	3. nssa
+10. Maximum path: </numero>
 	1. Se refiere a ECMP *load-balancing*
 	2. configurable con el comando "maximum-paths </numero>"
-9. Routing for networks:
+	3. OSPF acepta *load-balancing* usando ECMP en determinados *paths*
+11. Routing for networks:
 	1. Las redes que ingresamos con el comando "network"
-10. Passive Interface
+12. Passive Interface
 	1. Nos muestra las interfaces pasivas que configuramos
-11. Routing Information Sources:
+13. Routing Information Sources:
 	1. nos muestra los vecinos con el mismo protocolo de *routeo* dinámico
-12. Distance:
+14. Distance:
 	1. Nos muestra la [[Dynamic Routing|AD]] del protocolo elegido

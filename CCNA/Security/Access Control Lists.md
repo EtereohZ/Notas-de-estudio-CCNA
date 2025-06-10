@@ -45,7 +45,7 @@ Se divide en 2 tipos de ACL's:
 
 Extended ACL's deben configurarse lo mas cercano a la fuente como sea posible, a diferencia de los *standard*.
 #### Configuración
-1. Entramos al modo de configuración con "ip accesss-list {number|name}"
+1. Entramos al modo de configuración con "ip access-list extended {number|name}"
 2. Configuramos una *entry* con "[entry_number] {deny|permit} {[protocol]  [src-ip]  [dst-ip]}"
 
 En las *extended*, para referirnos a un *host* debemos escribir "host" antes del IP o la *wildcard*, ya no nos sirve solo poner el IP.
